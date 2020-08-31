@@ -2,49 +2,85 @@ import React, { useState, useEffect } from 'react'
 import { Typography, Container, FormControl, InputLabel, Select, MenuItem, Box, TextField, Button } from '@material-ui/core'
 import EventSeatIcon from "@material-ui/icons/EventSeat"
 
-const initialPrice = 10
-const initialSeatArr = []
-const initalTotalPrice = 0
+
+const initialCinema = JSON.parse(localStorage.getItem('movieData')) || {
+    price: 10,
+    seatNumber: 100,
+    seatArr: [],
+    totalPrice: 0,
+}
 
 const MovieSeatBooking = () => {
 
-    const [price, setPrice] = useState(initialPrice)
-    const [seatNumber, setSeatNumber] = useState(100)
-    const [seatArr, setSeatArr] = useState(initialSeatArr)
-    const [totalPrice, setTotalPrice] = useState(initalTotalPrice)
+    const [cinema, setCinema] = useState(initialCinema)
     
     const handleChange = event => {
         const { value } = event.target
-        setPrice(value)
+        setCinema({
+            ...cinema,
+            price: value
+        })
     }
 
     const handleInput = event => {
         const { value } = event.target
-        setSeatNumber(value)
+        setCinema({
+            ...cinema,
+            seatNumber:value
+        })
     }
 
     const handleClick = id => {
-        const newArr = [...seatArr]
+        const newArr = [...cinema.seatArr]
         newArr.forEach(item => {
             if (item.id === id) {
-                item.color = 'secondary'
-                item.booked = true
+                item.booked = !item.booked
+                if (item.color === 'primary') { item.color = 'secondary' }
+                else(item.color = 'primary')
             }
         })
-        setSeatArr(newArr)
+        setCinema({
+            ...cinema,
+            seatArr: newArr
+        })
         const bookedSeats = newArr.filter(item => item.booked === true)
-        const newTotalPrice = price * bookedSeats.length
-        setTotalPrice(newTotalPrice)
+        const newTotalPrice = cinema.price * bookedSeats.length
+        setCinema({
+            ...cinema,
+            totalPrice: cinema.totalPrice + newTotalPrice
+        })
     }
 
     useEffect(() => {
         //initalize the seat array once the component mounted or the seatnumber changed
+        //if the localstory is true, user can not change the seat-number
         let newArr = []
-        for (let i = 0; i < seatNumber; i++) {
+        for (let i = 0; i < cinema.seatNumber; i++) {
             newArr.push({id: i, booked: false, color: 'primary'})
         }
-        setSeatArr(newArr)
-    },[seatNumber])
+        setCinema(
+            localStorage.getItem('movieData') ? 
+            JSON.parse(localStorage.getItem('movieData')) :
+            {
+            ...cinema,
+            seatArr: newArr
+        })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [cinema.seatNumber])
+    
+    const handleSave = () => {
+        localStorage.setItem('movieData', JSON.stringify(cinema))
+     }
+
+    const handleClear = () => {
+        localStorage.clear()
+        setCinema({
+          price: 10,
+          seatNumber: 100,
+          seatArr: [],
+          totalPrice: 0,
+        })
+     }
 
     return (
       <div>
@@ -58,25 +94,25 @@ const MovieSeatBooking = () => {
               labelId="ticket-price"
               name="price"
               onChange={handleChange}
-              defaultValue={10}
+              value={cinema.price}
             >
               <MenuItem value={10}>$10</MenuItem>
               <MenuItem value={15}>$15</MenuItem>
               <MenuItem value={20}>$20</MenuItem>
             </Select>
           </FormControl>
-          <FormControl>
+          <FormControl >
             <TextField
               label="seat-number"
-              name="seatNumber"
+              name='seatNumber'
               onChange={handleInput}
-              value={seatNumber}
+            value={cinema.seatNumber}             
             />
           </FormControl>
           <Box>
             <Typography>Cinema</Typography>
             <Box display="flex" flexWrap="wrap" width="250px">
-              {seatArr.map((seat) => {
+              {cinema.seatArr.map((seat) => {
                 return (
                   <Box key={seat.id} width="25px">
                     <EventSeatIcon
@@ -88,9 +124,9 @@ const MovieSeatBooking = () => {
               })}
             </Box>
           </Box>
-          <Typography>Total Price is ${totalPrice}</Typography>
-          <Button variant="contained" color='primary'>Save</Button>
-          <Button variant="contained" color='secondary'>Clear</Button>
+          <Typography>Total Price is ${cinema.totalPrice}</Typography>
+          <Button variant="contained" color='primary' onClick={handleSave}>Save</Button>
+          <Button variant="contained" color='secondary' onClick={handleClear}>Clear</Button>
         </Container>
       </div>
     )
