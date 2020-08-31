@@ -12,6 +12,8 @@ import {
 } from "@material-ui/core"
 import EventSeatIcon from "@material-ui/icons/EventSeat"
 
+
+// asign local value from localstorage or from a empty obj
 const initialCinema = JSON.parse(localStorage.getItem("movieData")) || {
   price: 10,
   seatNumber: 100,
@@ -22,6 +24,7 @@ const initialCinema = JSON.parse(localStorage.getItem("movieData")) || {
 const MovieSeatBooking = () => {
   const [cinema, setCinema] = useState(initialCinema)
 
+    //update price
   const handleChange = (event) => {
     const { value } = event.target
     setCinema({
@@ -29,7 +32,7 @@ const MovieSeatBooking = () => {
       price: value,
     })
   }
-
+  //update seats
   const handleInput = (event) => {
     const { value } = event.target
     setCinema({
@@ -38,6 +41,7 @@ const MovieSeatBooking = () => {
     })
   }
 
+  //toggle color and booked state, come up with a total price
   const handleClick = (id) => {
     const newArr = [...cinema.seatArr]
     newArr.forEach((item) => {
@@ -63,7 +67,7 @@ const MovieSeatBooking = () => {
 
   useEffect(() => {
     //initalize the seat array once the component mounted or the seatnumber changed
-    //if the localstory is true, user can not change the seat-number
+    //if the localstory is true, user can not change the seat-number (will overwrite by the local storage)
     let newArr = []
     for (let i = 0; i < cinema.seatNumber; i++) {
       newArr.push({ id: i, booked: false, color: "primary" })
