@@ -18,36 +18,36 @@ import gone from "../../video/gone.mp4"
 const initialState = {
   paused: false,
   currentTime: 0,
-  length: null,
 }
 
 const VideoPlayer = () => {
-  const [state, setState] = useState(initialState)
+
+    const [state, setState] = useState(initialState)
+    const [length, setLength] = useState(null)
 
   //once the dom rendered, set the video with the actually dom element.
   //this can not be done by const video = document.getElementByID, becasue the first time it runs the dom has not been rendered.
   useEffect(() => {
     const video = document.getElementById("video")
-    let dur = document.getElementById("video").duration
-    dur = dur.toFixed()
-
-    setState({
-      ...state,
-      length: dur,
-    })
 
     setInterval(() => {
-        setState({
-            ...state,
-            currentTime: video.currentTime,
-            length: dur,
-        })
+      setState({
+        ...state,
+        currentTime: video.currentTime,
+        //length: dur,
+      })
     }, 10)
 
-    setInterval(() => {
-      //console.log(state.length)
-    }, 1000)
+      setInterval(() => {
+        //console.log(length)
+    }, 2000)
   }, [])
+
+   const handleMeta = (event) => {
+     const { duration } = event.target
+     console.log(duration.toFixed())
+     setLength(duration)
+   }
 
   const handelPlay = () => {
     const video = document.getElementById("video")
@@ -83,8 +83,9 @@ const VideoPlayer = () => {
           <CardMedia
             id="video"
             component="video"
-            src={gone}
+            src={doggy}
             autoPlay
+            onLoadedMetadata={handleMeta}
           ></CardMedia>
           <CardActionArea>
             <PlayArrowIcon onClick={handelPlay} />
@@ -98,7 +99,7 @@ const VideoPlayer = () => {
               value={state.currentTime}
               step={0.1}
               min={0}
-              max={state.length}
+              max={length}
             />
           </CardActionArea>
         </Card>
