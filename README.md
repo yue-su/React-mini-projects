@@ -26,5 +26,5 @@ This project aims to re-write the apps with React components,  React Router and 
 * Breakout Game
 * New Year Countdown
 * Sortable List
-* Sepak Number Guessing Game
+* Speak Number Guessing Game
 
