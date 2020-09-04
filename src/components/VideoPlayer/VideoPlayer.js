@@ -13,7 +13,7 @@ import ReplayIcon from "@material-ui/icons/Replay"
 //import StopIcon from "@material-ui/icons/Stop"
 
 import doggy from "../../video/doggy.mp4"
-import gone from "../../video/gone.mp4"
+//import gone from "../../video/gone.mp4"
 
 const initialState = {
   paused: false,
@@ -45,7 +45,7 @@ const VideoPlayer = () => {
 
    const handleMeta = (event) => {
      const { duration } = event.target
-     console.log(duration.toFixed())
+     //console.log(duration.toFixed())
      setLength(duration)
    }
 
@@ -84,7 +84,8 @@ const VideoPlayer = () => {
             id="video"
             component="video"
             src={doggy}
-            autoPlay
+                      autoPlay
+                      loop
             onLoadedMetadata={handleMeta}
           ></CardMedia>
           <CardActionArea>
