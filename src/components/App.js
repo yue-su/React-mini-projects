@@ -14,7 +14,6 @@ import Header from './Header';
 function App() {
   return (
     <div className="App">
-      <Header />
       <Switch>
         <Route path ='/' component={Home}  exact />
         <Route path='/movie' component={MovieSeatBooking} />
