@@ -12,7 +12,7 @@ export const projects = [
     name: "Custom Video Player",
     path: "/custom-video-player",
     description: "A video player with HTML5 video API",
-    heightlight: ["DOM selector", "MetaData"],
+    heightlight: ["DOM selector", "MetaData", "setIntervel"],
     image: require("../../images/project-2.png"),
   },
   {

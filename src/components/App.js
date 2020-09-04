@@ -19,7 +19,7 @@ function App() {
           <Header />
           <Switch>
             <Route path="/" component={Home} exact />
-            <Route path="/movie" component={MovieSeatBooking} />
+            <Route path="/movie-seat-booking" component={MovieSeatBooking} />
           </Switch>
         </Box>
         <Footer />

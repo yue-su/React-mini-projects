@@ -9,7 +9,7 @@ const Header = () => {
     return (
       <Box>
         <Grid container>
-          <Grid item sm={2}>
+          <Grid item md={2}>
             <Box
               display="flex"
               justifyContent="center"
@@ -18,7 +18,7 @@ const Header = () => {
               <CardMedia src={logoTransparent} component="img" />
             </Box>
           </Grid>
-          <Grid item sm={8}>
+          <Grid item md={8}>
             <Box
               display="flex"
               justifyContent="center"
@@ -26,11 +26,11 @@ const Header = () => {
               height="100%"
             >
               <Typography variant="h3" align="center">
-                React Mini Projects
+                REACT MINI PROJECTS
               </Typography>
             </Box>
           </Grid>
-          <Grid item sm={2}>
+          <Grid item md={2}>
             <Box
               display="flex"
               justifyContent="space-around"

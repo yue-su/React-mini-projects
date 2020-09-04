@@ -1,14 +1,15 @@
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
-import {Link, Container, Card, CardMedia, CardContent, Typography, CardActions, Box, Paper, Grid, Avatar} from '@material-ui/core'
+import {Link, Container, Card, CardMedia, CardContent, Typography, CardActions, Box, Paper, Grid, Avatar, Chip} from '@material-ui/core'
 import hero from '../../images/hero.jpg'
 import project1 from '../../images/project-1.png'
 import { makeStyles } from "@material-ui/core/styles"
 import { projects } from './projectsData'
+import ProjectCard from './ProjectCard'
 
 const useStyles = makeStyles(theme => ({
   media: {
-    height: 140,
+    height: 240,
   },
   large: {
     width: theme.spacing(9),
@@ -31,36 +32,8 @@ const Home = () => {
           <CardActions></CardActions>
         </Card>
         <Box mt={3}>
-          <Grid container spacing={2} justify="left" wrap>
-            {projects.map((project) => {
-              //const image = require(project.image)
-              return (
-                <Grid item key={project.id} sm={4}>
-                  <Paper>
-                    <Box>
-                      <Card>
-                        <CardMedia src={project.image} component='img'/>
-                        <CardContent>
-                          <Typography variant="subtitle1">
-                            {project.name}
-                          </Typography>
-                        </CardContent>
-                      </Card>
-                    </Box>
-                  </Paper>
-                </Grid>
-              )
-            })}
-          </Grid>
+          <ProjectCard projects={projects}/>
         </Box>
-        <Link
-          component={RouterLink}
-          to="/movie"
-          color="primary"
-          underline="none"
-        >
-          Movie Seat Booking
-        </Link>
       </Container>
     )
 }
