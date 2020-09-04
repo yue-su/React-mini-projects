@@ -8,6 +8,9 @@ const Home = () => {
         <Link component={RouterLink} to="/movie" color='primary' underline='none'>
           Movie Seat Booking
         </Link>
+        <Link component={RouterLink} to='/video-player' color='primary' underline='none'>
+          Video Player
+        </Link>
       </div>
     )
 }
