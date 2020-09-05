@@ -1,8 +1,6 @@
 import React from 'react'
-import { Link as RouterLink } from 'react-router-dom'
-import {Link, Container, Card, CardMedia, CardContent, Typography, CardActions, Box, Paper, Grid, Avatar, Chip} from '@material-ui/core'
+import {Container, Card, CardMedia, CardContent, Typography, CardActions, Box} from '@material-ui/core'
 import hero from '../../images/hero.jpg'
-import project1 from '../../images/project-1.png'
 import { makeStyles } from "@material-ui/core/styles"
 import { projects } from './projectsData'
 import ProjectCard from './ProjectCard'
