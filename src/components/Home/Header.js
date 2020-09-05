@@ -1,24 +1,34 @@
 import React from 'react'
-import { Typography, Box, Grid, CardMedia } from '@material-ui/core'
+import { Typography, Box, Grid, CardMedia, Container } from '@material-ui/core'
 import HomeIcon from "@material-ui/icons/Home"
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount"
 import { Link } from "react-router-dom"
 import logoTransparent from '../../images/logo_transparent.png'
+import { makeStyles } from "@material-ui/core/styles"
+
+const useStyles = makeStyles((theme) => ({
+  media: {
+        maxWidth: '200px',
+  },
+}))
 
 const Header = () => {
+
+    const classes = useStyles()
+
     return (
-      <Box>
+      <Container>
         <Grid container>
-          <Grid item md={2}>
-            <Box
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <CardMedia src={logoTransparent} component="img" />
+          <Grid item md={2} xs={12}>
+            <Box display="flex" justifyContent="center" alignItems="center">
+              <CardMedia
+                className={classes.media}
+                src={logoTransparent}
+                component="img"
+              />
             </Box>
           </Grid>
-          <Grid item md={8}>
+          <Grid item md={8} xs={12}>
             <Box
               display="flex"
               justifyContent="center"
@@ -30,7 +40,7 @@ const Header = () => {
               </Typography>
             </Box>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2} xs={12}>
             <Box
               display="flex"
               justifyContent="space-around"
@@ -46,7 +56,7 @@ const Header = () => {
             </Box>
           </Grid>
         </Grid>
-      </Box>
+      </Container>
     )
 }
 
