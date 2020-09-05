@@ -1,5 +1,5 @@
 import React from 'react'
-import {Container, Card, CardMedia, CardContent, Typography, CardActions, Box} from '@material-ui/core'
+import {Card, CardMedia, CardContent, Typography, CardActions, Box} from '@material-ui/core'
 import hero from '../../images/hero.jpg'
 import { makeStyles } from "@material-ui/core/styles"
 import { projects } from './projectsData'
@@ -20,7 +20,7 @@ const Home = () => {
   const classes = useStyles()
 
     return (
-      <Container>
+      <Box>
         <Card>
           <CardMedia className={classes.media} src={hero} component="img" />
           <CardContent>
@@ -30,9 +30,9 @@ const Home = () => {
           <CardActions></CardActions>
         </Card>
         <Box mt={3}>
-          <ProjectCard projects={projects}/>
+          <ProjectCard projects={projects} />
         </Box>
-      </Container>
+      </Box>
     )
 }
 

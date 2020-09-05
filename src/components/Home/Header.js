@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Box, Grid, CardMedia, Container } from '@material-ui/core'
+import { Typography, Box, Grid, CardMedia } from '@material-ui/core'
 import HomeIcon from "@material-ui/icons/Home"
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount"
 import { Link } from "react-router-dom"
@@ -9,7 +9,13 @@ import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles((theme) => ({
   media: {
         maxWidth: '200px',
-  },
+    },
+    icon: {
+        margin: '0.5rem',
+        padding: '0.75rem',
+        border: '2px solid',
+        borderRadius: '50%'
+    }
 }))
 
 const Header = () => {
@@ -17,9 +23,8 @@ const Header = () => {
     const classes = useStyles()
 
     return (
-      <Container>
         <Grid container>
-          <Grid item md={2} xs={12}>
+          <Grid item sm={2} xs={12}>
             <Box display="flex" justifyContent="center" alignItems="center">
               <CardMedia
                 className={classes.media}
@@ -28,19 +33,19 @@ const Header = () => {
               />
             </Box>
           </Grid>
-          <Grid item md={8} xs={12}>
+          <Grid item sm={8} xs={12}>
             <Box
               display="flex"
               justifyContent="center"
               alignItems="center"
               height="100%"
             >
-              <Typography variant="h3" align="center">
+              <Typography variant="h4" align="center">
                 REACT MINI PROJECTS
               </Typography>
             </Box>
           </Grid>
-          <Grid item md={2} xs={12}>
+          <Grid item sm={2} xs={12}>
             <Box
               display="flex"
               justifyContent="space-around"
@@ -48,15 +53,14 @@ const Header = () => {
               height="100%"
             >
               <Link to="/">
-                <HomeIcon />
+                <HomeIcon className={classes.icon} />
               </Link>
               <Link to="/admin">
-                <SupervisorAccountIcon />
+                <SupervisorAccountIcon className={classes.icon} />
               </Link>
             </Box>
           </Grid>
         </Grid>
-      </Container>
     )
 }
 
