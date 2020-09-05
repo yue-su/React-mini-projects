@@ -20,16 +20,16 @@ function App() {
         minHeight="100vh"
         bgcolor="background.default"
       >
-        <Container maxWidth="md">
-          <Box flexGrow={1}>
+        <Box flexGrow={1}>
+          <Container maxWidth="md">
             <Header />
             <Switch>
               <Route path="/" component={Home} exact />
               <Route path="/movie-seat-booking" component={MovieSeatBooking} />
             </Switch>
-          </Box>
-          <Footer />
-        </Container>
+          </Container>
+        </Box>
+        <Footer />
       </Box>
     </ThemeProvider>
   )

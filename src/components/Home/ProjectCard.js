@@ -17,7 +17,6 @@ import { makeStyles } from "@material-ui/core/styles"
 import { purple } from "@material-ui/core/colors"
 
 const useStyles = makeStyles((theme) => ({
- 
   purple: {
     color: theme.palette.getContrastText(purple[600]),
     backgroundColor: purple[600],

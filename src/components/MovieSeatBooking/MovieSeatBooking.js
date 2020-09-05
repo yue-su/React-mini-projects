@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import {
   Typography,
-  Container,
   FormControl,
   InputLabel,
   Select,
@@ -9,6 +8,8 @@ import {
   Box,
   TextField,
   Button,
+  Grid,
+  Paper,
 } from "@material-ui/core"
 import EventSeatIcon from "@material-ui/icons/EventSeat"
 
@@ -106,56 +107,74 @@ const MovieSeatBooking = () => {
   }
 
   return (
-    <div>
-      <Typography variant="h2" align="center">
-        Movie Seat Booking
-      </Typography>
-      <Container>
-        <FormControl>
-          <InputLabel id="ticket-price">Price</InputLabel>
-          <Select
-            labelId="ticket-price"
-            name="price"
-            onChange={handleChange}
-            value={cinema.price}
-          >
-            <MenuItem value={10}>$10</MenuItem>
-            <MenuItem value={15}>$15</MenuItem>
-            <MenuItem value={20}>$20</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl>
-          <TextField
-            label="seat-number"
-            name="seatNumber"
-            onChange={handleInput}
-            value={cinema.seatNumber}
-          />
-        </FormControl>
-        <Box>
-          <Typography>Cinema</Typography>
-          <Box display="flex" flexWrap="wrap" width="250px">
-            {cinema.seatArr.map((seat) => {
-              return (
-                <Box key={seat.id} width="25px">
-                  <EventSeatIcon
-                    color={seat.color}
-                    onClick={() => handleClick(seat.id)}
-                  />
-                </Box>
-              )
-            })}
+    <Grid container spacing={1}>
+      <Grid item md={6} xs={12}>
+        <Paper>
+          <Typography variant="h6" align="center">
+            Movie Seat Booking
+          </Typography>
+        </Paper>
+      </Grid>
+      <Grid item md={6} xs={12}>
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          border='2px solid purple'
+          borderRadius='10px'
+          padding='1rem'
+        >
+          <Box>
+            <FormControl>
+              <InputLabel id="ticket-price">Price</InputLabel>
+              <Select
+                labelId="ticket-price"
+                name="price"
+                onChange={handleChange}
+                value={cinema.price}
+              >
+                <MenuItem value={10}>$10</MenuItem>
+                <MenuItem value={15}>$15</MenuItem>
+                <MenuItem value={20}>$20</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl>
+              <TextField
+                label="Total Seat Number"
+                name="seatNumber"
+                onChange={handleInput}
+                value={cinema.seatNumber}
+              />
+            </FormControl>
+          </Box>
+          <Box align="center" m={1}>
+            <Typography>Cinema</Typography>
+            <Box display="flex" flexWrap="wrap" width="250px">
+              {cinema.seatArr.map((seat) => {
+                return (
+                  <Box key={seat.id} width="25px">
+                    <EventSeatIcon
+                      color={seat.color}
+                      onClick={() => handleClick(seat.id)}
+                    />
+                  </Box>
+                )
+              })}
+            </Box>
+          </Box>
+          <Box>
+            <Typography>Total Price is ${cinema.totalPrice}</Typography>
+            <Button variant="contained" color="primary" onClick={handleSave}>
+              Save
+            </Button>
+            <Button variant="contained" color="secondary" onClick={handleClear}>
+              Clear
+            </Button>
           </Box>
         </Box>
-        <Typography>Total Price is ${cinema.totalPrice}</Typography>
-        <Button variant="contained" color="primary" onClick={handleSave}>
-          Save
-        </Button>
-        <Button variant="contained" color="secondary" onClick={handleClear}>
-          Clear
-        </Button>
-      </Container>
-    </div>
+      </Grid>
+    </Grid>
   )
 }
 
