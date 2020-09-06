@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles((theme) => ({
   media: {
-        maxWidth: '200px',
+        maxWidth: '120px',
     },
     icon: {
         margin: '0.5rem',
