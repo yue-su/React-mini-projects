@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, CardMedia, CardContent, Typography, CardActions, Box, Grid, Avatar, Paper} from '@material-ui/core'
+import {Card, CardMedia, CardContent, CardActions, Box, Grid} from '@material-ui/core'
 import hero from '../../images/hero.jpg'
 import { makeStyles } from "@material-ui/core/styles"
 import { projects } from './projectsData'
@@ -30,7 +30,7 @@ const Home = () => {
         <Card>
           <CardMedia className={classes.media} src={hero} component="img" />
           <CardContent>
-            <Grid container spacing={2}>
+            <Grid container spacing={3}>
               <AuthorCard />
               <Introduction />
             </Grid>
