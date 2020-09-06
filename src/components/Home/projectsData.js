@@ -21,7 +21,7 @@ export const projects = [
     path: "/custom-video-player",
     description: "A video player with HTML5 video API",
     heightlight: ["DOM selector", "MetaData"],
-    image: require("../../images/project-2.png"),
+    image: require("../../images/project-3.png"),
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ export const projects = [
     path: "/custom-video-player",
     description: "A video player with HTML5 video API",
     heightlight: ["DOM selector", "MetaData"],
-    image: require("../../images/project-2.png"),
+    image: require("../../images/project-3.png"),
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ export const projects = [
     path: "/custom-video-player",
     description: "A video player with HTML5 video API",
     heightlight: ["DOM selector", "MetaData"],
-    image: require("../../images/project-2.png"),
+    image: require("../../images/project-3.png"),
   },
   {
     id: 6,
@@ -45,6 +45,6 @@ export const projects = [
     path: "/custom-video-player",
     description: "A video player with HTML5 video API",
     heightlight: ["DOM selector", "MetaData"],
-    image: require("../../images/project-2.png"),
+    image: require("../../images/project-3.png"),
   },
 ]
