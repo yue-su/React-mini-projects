@@ -42,7 +42,7 @@ const ProjectCard = (props) => {
                   <CardContent>
                     <Grid container>
                       <Grid item xs={10}>
-                        <Typography variant="h6" align="left">
+                        <Typography variant="subtitle2" align="left">
                           {project.name}
                         </Typography>
                         <Typography variant="body2">

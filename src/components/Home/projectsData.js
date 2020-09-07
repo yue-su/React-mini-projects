@@ -17,8 +17,8 @@ export const projects = [
   },
   {
     id: 3,
-    name: "Custom Video Player",
-    path: "/custom-video-player",
+    name: "Exchange Rate Calculator",
+    path: "/exchange-rate-calculator",
     description: "A video player with HTML5 video API",
     heightlight: ["DOM selector", "MetaData"],
     image: require("../../images/project-3.png"),
@@ -29,7 +29,7 @@ export const projects = [
     path: "/custom-video-player",
     description: "A video player with HTML5 video API",
     heightlight: ["DOM selector", "MetaData"],
-    image: require("../../images/project-3.png"),
+    image: require("../../images/project-unknown.png"),
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ export const projects = [
     path: "/custom-video-player",
     description: "A video player with HTML5 video API",
     heightlight: ["DOM selector", "MetaData"],
-    image: require("../../images/project-3.png"),
+    image: require("../../images/project-unknown.png"),
   },
   {
     id: 6,
@@ -45,6 +45,6 @@ export const projects = [
     path: "/custom-video-player",
     description: "A video player with HTML5 video API",
     heightlight: ["DOM selector", "MetaData"],
-    image: require("../../images/project-3.png"),
+    image: require("../../images/project-unknown.png"),
   },
 ]
