@@ -9,7 +9,7 @@ import Introduction from './Introduction'
 
 const useStyles = makeStyles(theme => ({
   media: {
-    height: 240,
+    height: 220,
   },
   large: {
     width: theme.spacing(10),

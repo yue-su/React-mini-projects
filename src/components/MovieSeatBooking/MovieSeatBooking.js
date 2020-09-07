@@ -9,9 +9,9 @@ import {
   TextField,
   Button,
   Grid,
-  Paper,
 } from "@material-ui/core"
 import EventSeatIcon from "@material-ui/icons/EventSeat"
+import Description from "./Description"
 
 
 // asign local value from localstorage or from a empty obj
@@ -109,21 +109,14 @@ const MovieSeatBooking = () => {
   return (
     <Grid container spacing={1}>
       <Grid item md={6} xs={12}>
-        <Paper>
-          <Typography variant="h6" align="center">
-            Movie Seat Booking
-          </Typography>
-        </Paper>
-      </Grid>
-      <Grid item md={6} xs={12}>
         <Box
           display="flex"
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          border='2px solid purple'
-          borderRadius='10px'
-          padding='1rem'
+          border="2px solid purple"
+          borderRadius="10px"
+          padding="1rem"
         >
           <Box>
             <FormControl>
@@ -174,6 +167,7 @@ const MovieSeatBooking = () => {
           </Box>
         </Box>
       </Grid>
+      <Description />
     </Grid>
   )
 }

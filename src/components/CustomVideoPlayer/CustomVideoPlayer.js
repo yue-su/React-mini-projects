@@ -64,8 +64,6 @@ const handleTime = (event) => {
     
   return (
     <Grid container spacing={1}>
-      <Description />
-
       <Grid item md={6} xs={12}>
         <Box
           display="flex"
@@ -101,6 +99,7 @@ const handleTime = (event) => {
           </Card>
         </Box>
       </Grid>
+      <Description />
     </Grid>
   )
 }

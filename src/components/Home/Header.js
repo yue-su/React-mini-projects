@@ -8,6 +8,10 @@ import logoTransparent from '../../images/logo_transparent.png'
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles((theme) => ({
+  header: {
+    marginTop: '1rem',
+    marginBottom: '1rem'
+  },
   media: {
         maxWidth: '120px',
     },
@@ -25,7 +29,7 @@ const Header = () => {
     const classes = useStyles()
 
     return (
-      <Grid container>
+      <Grid container className={classes.header}>
         <Grid item sm={2} xs={12}>
           <Box display="flex" justifyContent="center" alignItems="center">
             <CardMedia
