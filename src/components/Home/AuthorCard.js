@@ -37,15 +37,8 @@ const AuthorCard = () => {
     const classes = useStyles()
 
     return (
-      <Grid
-            md={6}
-            xs={12}
-        item
-        container
-        spacing={1}
-        justify="space-between"
-      >
-            <Grid
+      <Grid md={4} xs={12} item container spacing={1} justify="space-between">
+        <Grid
           item
           container
           direction="column"
@@ -60,19 +53,19 @@ const AuthorCard = () => {
               <Typography gutterBottom variant="h6">
                 Yue Su
               </Typography>
-              <Typography>Full-Stack Developer</Typography>
+              <Typography variant="subtitle1">Full-Stack Developer</Typography>
             </Grid>
           </Grid>
           <Grid item>
             <List dense>
-              <ListItem >
+              <ListItem>
                 <ListItemIcon>
                   <PermIdentityIcon />
                 </ListItemIcon>
                 <ListItemText>
                   <Typography>
                     about me and about me and about me and about meand about
-                    meand about me and about me
+                    
                   </Typography>
                 </ListItemText>
               </ListItem>
@@ -103,7 +96,7 @@ const AuthorCard = () => {
             </List>
           </Grid>
         </Grid>
-            <Grid
+        <Grid
           item
           container
           direction="column"
@@ -118,19 +111,18 @@ const AuthorCard = () => {
               <Typography gutterBottom variant="h6">
                 Ryan Lee
               </Typography>
-              <Typography>Full-Stack Developer</Typography>
+              <Typography variant="subtitle1">Full-Stack Developer</Typography>
             </Grid>
           </Grid>
           <Grid item>
             <List dense>
-              <ListItem >
+              <ListItem>
                 <ListItemIcon>
                   <PermIdentityIcon />
                 </ListItemIcon>
                 <ListItemText>
                   <Typography>
                     about me and about me and about me and about meand about
-                    meand about me and about me
                   </Typography>
                 </ListItemText>
               </ListItem>
@@ -161,7 +153,6 @@ const AuthorCard = () => {
             </List>
           </Grid>
         </Grid>
-            
       </Grid>
     )
 }

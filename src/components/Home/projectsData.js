@@ -3,7 +3,7 @@ export const projects = [
     id: 1,
     name: "Movie Seat Booking",
     path: "/movie-seat-booking",
-    description: "A movie seat booking system",
+    description: "A flexiable movie seat booking system",
     heightlight: ["LocalStorage", "Array Method", "FlexBox"],
     image: require("../../images/project-1.png"),
   },

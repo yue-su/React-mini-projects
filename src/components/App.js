@@ -2,11 +2,11 @@ import React from 'react';
 import '../styles/App.css';
 import { Switch, Route } from 'react-router-dom'
 import MovieSeatBooking from './MovieSeatBooking/MovieSeatBooking';
+import CustomVideoPlayer from './CustomVideoPlayer/CustomVideoPlayer';
 import Home from './Home/Home';
 import Header from './Home/Header';
 import Footer from './Home/Footer';
 import { Box, Container } from '@material-ui/core';
-
 import { theme } from "../components/theme"
 import { ThemeProvider } from "@material-ui/core/styles"
 
@@ -26,6 +26,7 @@ function App() {
             <Switch>
               <Route path="/" component={Home} exact />
               <Route path="/movie-seat-booking" component={MovieSeatBooking} />
+              <Route path="/custom-video-player" component={CustomVideoPlayer} />
             </Switch>
           </Container>
         </Box>

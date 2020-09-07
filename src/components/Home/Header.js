@@ -40,7 +40,7 @@ const Header = () => {
               alignItems="center"
               height="100%"
             >
-              <Typography variant="h4" align="center">
+              <Typography variant="h3" align="center">
                 REACT MINI PROJECTS
               </Typography>
             </Box>
