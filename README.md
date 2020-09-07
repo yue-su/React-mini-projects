@@ -5,6 +5,15 @@ https://www.udemy.com/course/web-projects-with-vanilla-javascript/
 
 This project aims to re-write the apps with React components,  React Router and other libraries. 
 
+### Project Setup
+
+1. Create a new branch.
+2. Update the projectData.js and added Route path.
+3. Use the files from ProjectTemplate to start up a new project.
+4. Add descriptions or some notes regarding the project(there is also a template for that) .
+5. Testing and Merge.
+
+
 ### App list:
 
 * Form Validator
