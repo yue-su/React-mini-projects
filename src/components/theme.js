@@ -7,6 +7,7 @@ export const theme = createMuiTheme({
   palette: {
     primary: {
       main: purple[600],
+      dark: purple[900],
     },
     secondary: {
       main: orange[900],
@@ -23,6 +24,9 @@ export const theme = createMuiTheme({
     body1: {
       fontSize: '1rem',
       fontWeight: 300,
+    },
+    h3: {
+      fontWeight: 400,
     }
   }
 })
