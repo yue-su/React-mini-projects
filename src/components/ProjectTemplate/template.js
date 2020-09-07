@@ -1,6 +1,8 @@
 import React from "react"
 import { Typography, Grid, Paper, Box } from "@material-ui/core"
 
+//The sub grid could be changed to column stacks to better accommodate larger apps
+
 const Template = () => {
   return (
     <Grid container spacing={1}>
