@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, CardMedia, CardContent, CardActions, Box, Grid} from '@material-ui/core'
+import {Card, CardMedia, CardContent, Box, Grid} from '@material-ui/core'
 import hero from '../../images/hero.jpg'
 import { makeStyles } from "@material-ui/core/styles"
 import { projects } from './projectsData'

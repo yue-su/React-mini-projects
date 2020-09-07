@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react"
 import {
-  Typography,
   Grid,
-  Paper,
   Box,
   Card,
   CardMedia,
@@ -12,6 +10,7 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow"
 import PauseIcon from "@material-ui/icons/Pause"
 import ReplayIcon from "@material-ui/icons/Replay"
 import doggy from "../../video/doggy.mp4"
+import Description from "./Description"
 
 
 const CustomVideoPlayer = () => {
@@ -22,62 +21,50 @@ const [length, setLength] = useState(null)
 
 //once the dom rendered, set the video with the actually dom element.
 //this can not be done by const video = document.getElementByID, becasue the first time it runs the dom has not been rendered.
-useEffect(() => {
-  const video = document.getElementById("video")
-  //const duration = video.duration.toFixed()
-  setVideo(video)
-  //setLength(duration)
+  useEffect(() => {
+    const video = document.getElementById("video")
+    setVideo(video)
 
-  setInterval(() => {
-    setCurrentTime(video.currentTime)
-  }, 10)
+    setInterval(() => {
+      setCurrentTime(video.currentTime)
+    }, 10)
+  }, [])
 
-  setInterval(() => {
-    //console.log(length)
-  }, 2000)
-}, [])
+
+  const duration = () => {
+    const duration = video.duration.toFixed()
+    setLength(duration)
+}
 
 const handleMeta = (event) => {
   const { duration } = event.target
-  //console.log(duration.toFixed())
   setLength(duration)
 }
 
 const handelPlay = () => {
-  //const video = document.getElementById("video")
+  duration()
   video.play()
 }
 
 const handlePause = () => {
-  //const video = document.getElementById("video")
   video.pause()
 }
 
 const handleReplay = () => {
-  //const video = document.getElementById("video")
   video.load()
   video.play()
 }
 
 const handleTime = (event) => {
-  //video = document.getElementById("video")
   const { value } = event.target
   video.currentTime = value
   setCurrentTime(value)
-  //console.log(value)
 }
 
     
   return (
     <Grid container spacing={1}>
-      <Grid item md={6} xs={12}>
-        <Paper>
-          <Typography variant="h6" align="center">
-            Custom Video Player
-          </Typography>
-          <Typography>Description</Typography>
-        </Paper>
-      </Grid>
+      <Description />
 
       <Grid item md={6} xs={12}>
         <Box
@@ -94,7 +81,6 @@ const handleTime = (event) => {
               id="video"
               component="video"
               src={doggy}
-              autoPlay
               onLoadedMetadata={handleMeta}
             ></CardMedia>
             <CardActionArea>
