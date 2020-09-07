@@ -19,4 +19,10 @@ export const theme = createMuiTheme({
         primary: grey[900],
     }
   },
+  typography: {
+    body1: {
+      fontSize: '1rem',
+      fontWeight: 300,
+    }
+  }
 })
