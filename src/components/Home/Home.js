@@ -35,7 +35,6 @@ const Home = () => {
               <Introduction />
             </Grid>
           </CardContent>
-          <CardActions></CardActions>
         </Card>
         <Box mt={3}>
           <ProjectCard projects={projects} />

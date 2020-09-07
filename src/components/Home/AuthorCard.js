@@ -37,7 +37,7 @@ const AuthorCard = () => {
     const classes = useStyles()
 
     return (
-      <Grid md={6} xs={12} item container spacing={1} justify="space-between">
+      <Grid md={4} xs={12} item container spacing={1} justify="space-between">
         <Grid
           item
           container
@@ -65,7 +65,7 @@ const AuthorCard = () => {
                 <ListItemText>
                   <Typography>
                     about me and about me and about me and about meand about
-                    meand about me and about me
+                    
                   </Typography>
                 </ListItemText>
               </ListItem>
@@ -123,7 +123,6 @@ const AuthorCard = () => {
                 <ListItemText>
                   <Typography>
                     about me and about me and about me and about meand about
-                    meand about me and about me
                   </Typography>
                 </ListItemText>
               </ListItem>
