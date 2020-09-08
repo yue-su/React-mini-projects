@@ -30,7 +30,7 @@ const Home = () => {
         <Card>
           <CardMedia className={classes.media} src={hero} component="img" />
           <CardContent>
-            <Grid container spacing={3}>
+            <Grid container spacing={7}>
               <AuthorCard />
               <Introduction />
             </Grid>

@@ -20,6 +20,10 @@ const useStyles = makeStyles((theme) => ({
   purple: {
     color: theme.palette.getContrastText(purple[600]),
     backgroundColor: purple[600],
+  },
+  chip: {
+    fontSize: '0.75rem',
+    marginRight: '2px',
   }
 }))
 
@@ -30,7 +34,7 @@ const ProjectCard = (props) => {
   const { projects } = props
 
   return (
-    <Grid container spacing={2} justify="left" wrap>
+    <Grid container spacing={4} justify="left" wrap>
       {projects.map((project) => {
         //const image = require(project.image)
         return (
@@ -67,6 +71,7 @@ const ProjectCard = (props) => {
                       {project.heightlight.map((item) => {
                         return (
                           <Chip
+                            className={classes.chip}
                             label={item}
                             color="primary"
                             size="small"

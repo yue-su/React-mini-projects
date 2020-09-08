@@ -25,10 +25,14 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(10),
     height: theme.spacing(10),
   },
+  title: {
+    marginTop: 12,
+    marginLeft: 12,
+  },
   author: {
-        marginBottom: '10px',
-      backgroundColor: theme.palette.grey[100],
-    borderRadius: '10px'
+    marginBottom: "10px",
+    backgroundColor: theme.palette.grey[100],
+    borderRadius: "10px",
   },
 }))
 
@@ -37,7 +41,7 @@ const AuthorCard = () => {
     const classes = useStyles()
 
     return (
-      <Grid md={4} xs={12} item container spacing={1} justify="space-between">
+      <Grid md={5} xs={12} item container spacing={1} justify="space-between">
         <Grid
           item
           container
@@ -45,7 +49,13 @@ const AuthorCard = () => {
           className={classes.author}
           spacing={1}
         >
-          <Grid item container spacing={2} alignItems="center">
+          <Grid
+            item
+            container
+            spacing={2}
+            alignItems="center"
+            className={classes.title}
+          >
             <Grid item>
               <Avatar src={avatarYue} className={classes.large}></Avatar>
             </Grid>
@@ -63,9 +73,8 @@ const AuthorCard = () => {
                   <PermIdentityIcon />
                 </ListItemIcon>
                 <ListItemText>
-                  <Typography>
+                  <Typography variant="body2">
                     about me and about me and about me and about meand about
-                    
                   </Typography>
                 </ListItemText>
               </ListItem>
@@ -74,7 +83,7 @@ const AuthorCard = () => {
                   <LanguageIcon />
                 </ListItemIcon>
                 <ListItemText>
-                  <Typography>www.yue-su.dev</Typography>
+                  <Typography variant="body2">www.yue-su.dev</Typography>
                 </ListItemText>
               </ListItem>
               <ListItem button>
@@ -82,7 +91,7 @@ const AuthorCard = () => {
                   <EmailIcon />
                 </ListItemIcon>
                 <ListItemText>
-                  <Typography>su2047@gmail.com</Typography>
+                  <Typography variant="body2">su2047@gmail.com</Typography>
                 </ListItemText>
               </ListItem>
               <ListItem button>
@@ -90,7 +99,9 @@ const AuthorCard = () => {
                   <LinkedInIcon />
                 </ListItemIcon>
                 <ListItemText>
-                  <Typography>linkedin.com/in/suxyue/</Typography>
+                  <Typography variant="body2">
+                    linkedin.com/in/suxyue/
+                  </Typography>
                 </ListItemText>
               </ListItem>
             </List>
@@ -103,7 +114,13 @@ const AuthorCard = () => {
           className={classes.author}
           spacing={1}
         >
-          <Grid item container spacing={2} alignItems="center">
+          <Grid
+            item
+            container
+            spacing={2}
+            alignItems="center"
+            className={classes.title}
+          >
             <Grid item>
               <Avatar src={avatarRyan} className={classes.large}></Avatar>
             </Grid>
@@ -121,7 +138,7 @@ const AuthorCard = () => {
                   <PermIdentityIcon />
                 </ListItemIcon>
                 <ListItemText>
-                  <Typography>
+                  <Typography variant="body2">
                     about me and about me and about me and about meand about
                   </Typography>
                 </ListItemText>
@@ -131,7 +148,7 @@ const AuthorCard = () => {
                   <LanguageIcon />
                 </ListItemIcon>
                 <ListItemText>
-                  <Typography>www.yue-su.dev</Typography>
+                  <Typography variant="body2">www.yue-su.dev</Typography>
                 </ListItemText>
               </ListItem>
               <ListItem button>
@@ -139,7 +156,7 @@ const AuthorCard = () => {
                   <EmailIcon />
                 </ListItemIcon>
                 <ListItemText>
-                  <Typography>su2047@gmail.com</Typography>
+                  <Typography variant="body2">su2047@gmail.com</Typography>
                 </ListItemText>
               </ListItem>
               <ListItem button>
@@ -147,7 +164,9 @@ const AuthorCard = () => {
                   <LinkedInIcon />
                 </ListItemIcon>
                 <ListItemText>
-                  <Typography>linkedin.com/in/suxyue/</Typography>
+                  <Typography variant="body2">
+                    linkedin.com/in/suxyue/
+                  </Typography>
                 </ListItemText>
               </ListItem>
             </List>

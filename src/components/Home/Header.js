@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
         padding: '0.5rem',
         border: '2px solid',
       borderRadius: '50%',
-      color: theme.palette.primary.dark
+      fontSize:'1rem',
+      color: theme.palette.primary.dark,
     }
 }))
 

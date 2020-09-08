@@ -4,13 +4,13 @@ import GitHubIcon from "@material-ui/icons/GitHub"
 
 const Introduction = () => {
   return (
-    <Grid md={8} xs={12} item alignContent="center" justify="center" container spacing={3} >
+    <Grid md={7} xs={12} item alignContent="center" justify="center" container spacing={3} >
       <Grid item>
         <Typography variant="h5" paragraph align="center">
           Why mini projects ?
         </Typography>
       </Grid>
-      <Grid item>
+      <Grid item align='justify'>
         <Typography paragraph>
           As a front-end developer, it is imperative to keep sharpening your
           skills, updating knowledge, and tapping into some unfamiliar
