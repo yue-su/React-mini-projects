@@ -2,9 +2,11 @@ import React from "react"
 import {  Grid,  Box } from "@material-ui/core"
 import Description from "./Description"
 
+
 //The sub grid could be changed to column stacks to better accommodate larger apps
 
 const Template = () => {
+
   return (
     <Grid container spacing={1}>
       <Grid item md={6} xs={12}>
