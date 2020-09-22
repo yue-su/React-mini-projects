@@ -15,21 +15,21 @@ export const theme = createMuiTheme({
     background: {
       paper: grey[200],
       default: grey[100],
-        },
-        text: {
-        primary: grey[900],
-    }
+    },
+    text: {
+      primary: grey[900],
+    },
   },
   typography: {
     body1: {
-      fontSize: '1rem',
+      fontSize: "1rem",
       fontWeight: 300,
     },
     body2: {
-      fontWeight:300,
+      fontWeight: 300,
     },
     h3: {
       fontWeight: 400,
-    }
-  }
+    },
+  },
 })
