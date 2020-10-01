@@ -22,7 +22,7 @@ const Introduction = () => {
         </Typography>
         <Typography paragraph>
           This website is a project about implementing some of the key concepts
-          we learned when studying in{" "}
+          I learned when studying in{" "}
           <Link variant="body1" href="https://lambdaschool.com/">
             Lambda School
           </Link>
@@ -43,13 +43,13 @@ const Introduction = () => {
           fundamentals, DOM Manipulation, API & JSON, High Order Array Methods
           and more.
         </Typography>
-        <Typography paragraph>
+        {/* <Typography paragraph>
           We encourage anyone, especially junior developers interested in React,
           to take on some of the projects. Write some code and compare what you
           did with our Github repo. Chances are you would do better, or you
           might have some blockers. Either way, we could all gain something in
           the end.
-        </Typography>
+        </Typography> */}
       </Grid>
       <Grid item>
         <Typography align="center">

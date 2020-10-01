@@ -46,6 +46,7 @@ const AuthorCard = () => {
           item
           container
           direction="column"
+          justify='center'
           className={classes.author}
           spacing={1}
         >
@@ -107,7 +108,7 @@ const AuthorCard = () => {
             </List>
           </Grid>
         </Grid>
-        <Grid
+        {/*  <Grid
           item
           container
           direction="column"
@@ -171,7 +172,7 @@ const AuthorCard = () => {
               </ListItem>
             </List>
           </Grid>
-        </Grid>
+        </Grid>*/}
       </Grid>
     )
 }
