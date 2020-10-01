@@ -7,6 +7,7 @@ import {
   Input,
   MenuItem,
   Typography,
+  TextField
 } from "@material-ui/core"
 import Description from "./Description"
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn"
@@ -20,8 +21,8 @@ const ExchangeRateCalculator = () => {
 
   const [currency, setCurrency] = useState([])
   const [rate, setRate] = useState(null)
-  const [currencyFrom, setCurrencyFrom] = useState({ currency: "USD", rate: 1 })
-  const [currencyTo, setCurrencyTo] = useState({ currency: "CAD", rate: "" })
+  const [currencyFrom, setCurrencyFrom] = useState({ currency: "USD", rate: 1, amount: 1 })
+  const [currencyTo, setCurrencyTo] = useState({ currency: "CAD", rate: "", amount:"" })
 
   const getRates = (currency) => {
     Axios.get(
@@ -32,6 +33,7 @@ const ExchangeRateCalculator = () => {
       setCurrencyTo({
         ...currencyTo,
         rate: res.data.conversion_rates[`${currencyTo.currency}`],
+        amount: res.data.conversion_rates[`${currencyTo.currency}`],
       })
     })
   }
@@ -60,8 +62,20 @@ const ExchangeRateCalculator = () => {
   }
   const handleChangeTo = (event) => {
     setCurrencyTo({
+      ...currencyTo,
       currency: event.target.value,
       rate: rate[`${event.target.value}`],
+    })
+  }
+
+  const handleChangeAmount = (event) => {
+    setCurrencyFrom({
+      ...currencyFrom,
+      amount:event.target.value
+    })
+    setCurrencyTo({
+      ...currencyTo,
+      amount:event.target.value * rate[`${currencyTo.currency}`]
     })
   }
 
@@ -76,8 +90,9 @@ const ExchangeRateCalculator = () => {
           border="2px solid purple"
           borderRadius="10px"
           padding="1rem"
+          height="50vh"
         >
-          <Grid container justify="space-between">
+          <Grid container justify="space-between" >
             <Grid item>
               <InputLabel id="currencyFrom-label">From</InputLabel>
               <Select
@@ -94,10 +109,17 @@ const ExchangeRateCalculator = () => {
                   </MenuItem>
                 ))}
               </Select>
+              <InputLabel id="amount">Amount</InputLabel>
+              <TextField
+                labelId='amount'
+                value={currencyFrom.amount}
+                onChange={handleChangeAmount}
+              ></TextField>    
             </Grid>
             <Grid item>
               <MonetizationOnIcon />
               <Typography>{currencyTo.rate}</Typography>
+              <Typography>Equals</Typography>
             </Grid>
             <Grid item>
               <InputLabel id="currencyFrom-label">To</InputLabel>
@@ -115,6 +137,8 @@ const ExchangeRateCalculator = () => {
                   </MenuItem>
                 ))}
               </Select>
+              <Typography>Total</Typography>
+              <Typography>{currencyTo.amount}</Typography>
             </Grid>
           </Grid>
         </Box>
