@@ -4,13 +4,21 @@ import GitHubIcon from "@material-ui/icons/GitHub"
 
 const Introduction = () => {
   return (
-    <Grid md={7} xs={12} item alignContent="center" justify="center" container spacing={3} >
+    <Grid
+      md={7}
+      xs={12}
+      item
+      alignContent="center"
+      justify="center"
+      container
+      spacing={3}
+    >
       <Grid item>
         <Typography variant="h5" paragraph align="center">
           Why mini projects ?
         </Typography>
       </Grid>
-      <Grid item align='justify'>
+      <Grid item align="justify">
         <Typography paragraph>
           As a front-end developer, it is imperative to keep sharpening your
           skills, updating knowledge, and tapping into some unfamiliar
@@ -23,19 +31,28 @@ const Introduction = () => {
         <Typography paragraph>
           This website is a project about implementing some of the key concepts
           I learned when studying in{" "}
-          <Link variant="body1" href="https://lambdaschool.com/">
+          <Link
+            variant="body1"
+            href="https://lambdaschool.com/"
+            target="_blank"
+          >
             Lambda School
           </Link>
           . It is a demonstration of a series of projects that are all made by
           React and other related technology such as React-Router, Hooks,
           Material-UI, etc. These projects are inspired by{" "}
-          <Link variant="body1" href="https://twitter.com/traversymedia">
+          <Link
+            variant="body1"
+            href="https://twitter.com/traversymedia"
+            target="_blank"
+          >
             Brad Travery
           </Link>
           's Udemy course--{" "}
           <Link
             variant="body1"
             href="https://www.udemy.com/course/web-projects-with-vanilla-javascript"
+            target="_blank"
           >
             20 Web Projects With Vanilla JavaScript
           </Link>
