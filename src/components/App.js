@@ -10,6 +10,7 @@ import Footer from './Home/Footer';
 import MovieSeatBooking from './MovieSeatBooking/MovieSeatBooking';
 import CustomVideoPlayer from './CustomVideoPlayer/CustomVideoPlayer';
 import ExchangeRateCalculator from './ExchangeRateCalculator/ExchangeRateCalculator';
+import HangmanGame from './HangmanGame/HangmanGame';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
               <Route path="/movie-seat-booking" component={MovieSeatBooking} />
               <Route path="/custom-video-player" component={CustomVideoPlayer} />
               <Route path="/exchange-rate-calculator" component={ExchangeRateCalculator} />
+              <Route path="/hangman-game" component={HangmanGame} />
             </Switch>
           </Container>
         </Box>

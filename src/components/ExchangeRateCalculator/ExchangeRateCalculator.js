@@ -40,6 +40,7 @@ const ExchangeRateCalculator = () => {
 
   useEffect(() => {
     getRates(currencyFrom.currency)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const ITEM_HEIGHT = 48

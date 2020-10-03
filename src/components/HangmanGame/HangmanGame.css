@@ -1,0 +1,11 @@
+
+.svg-container {
+    fill: transparent;
+    stroke: #212121;
+    stroke-width: 4px;
+    stroke-linecap: round;
+}
+
+.body{
+    display: none;
+}

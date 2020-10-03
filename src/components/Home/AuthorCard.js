@@ -12,7 +12,7 @@ import {
   ListItemText,
   
 } from "@material-ui/core"
-import avatarRyan from "../../images/Avatar_Ryan.jpeg"
+//import avatarRyan from "../../images/Avatar_Ryan.jpeg"
 import avatarYue from "../../images/Avatar_Yue.JPG"
 import { makeStyles } from "@material-ui/core/styles"
 import EmailIcon from "@material-ui/icons/Email"

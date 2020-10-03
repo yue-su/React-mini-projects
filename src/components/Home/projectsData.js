@@ -25,11 +25,11 @@ export const projects = [
   },
   {
     id: 4,
-    name: "Custom Video Player",
-    path: "/custom-video-player",
-    description: "A video player with HTML5 video API",
-    heightlight: ["DOM selector", "MetaData"],
-    image: require("../../images/project-unknown.png"),
+    name: "Hangman Game",
+    path: "/hangman-game",
+    description: "A word guessing game",
+    heightlight: ["SVG", "MetaData"],
+    image: require("../../images/project-4.png"),
   },
   {
     id: 5,
