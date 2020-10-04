@@ -33,11 +33,11 @@ export const projects = [
   },
   {
     id: 5,
-    name: "Custom Video Player",
-    path: "/custom-video-player",
-    description: "A video player with HTML5 video API",
+    name: "Tomato Timer",
+    path: "/tomato-timer",
+    description: "A timer based on the tomato working scheme",
     heightlight: ["DOM selector", "MetaData"],
-    image: require("../../images/project-unknown.png"),
+    image: require("../../images/project-5.png"),
   },
   {
     id: 6,

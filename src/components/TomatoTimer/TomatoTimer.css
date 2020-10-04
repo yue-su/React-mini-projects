@@ -1,0 +1,9 @@
+.timer {
+    background-color: grey;
+    height: 400px;
+    width: 400px;
+    fill:transparent;
+    stroke: #121212;
+    stroke-width: 5px;
+    stroke-linecap: round;
+}

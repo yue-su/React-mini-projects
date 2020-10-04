@@ -11,6 +11,7 @@ import MovieSeatBooking from './MovieSeatBooking/MovieSeatBooking';
 import CustomVideoPlayer from './CustomVideoPlayer/CustomVideoPlayer';
 import ExchangeRateCalculator from './ExchangeRateCalculator/ExchangeRateCalculator';
 import HangmanGame from './HangmanGame/HangmanGame';
+import TomatoTimer from './TomatoTimer/TomatoTimer';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
               <Route path="/custom-video-player" component={CustomVideoPlayer} />
               <Route path="/exchange-rate-calculator" component={ExchangeRateCalculator} />
               <Route path="/hangman-game" component={HangmanGame} />
+              <Route path="/tomato-timer" component={TomatoTimer} />
             </Switch>
           </Container>
         </Box>
