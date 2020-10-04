@@ -16,8 +16,7 @@ const HangmanGame = () => {
           borderRadius="10px"
           padding="1rem"
         >
-          <Grid container>
-            <Grid item></Grid>
+          <Grid container direction="column" alignItems="center" >
             <Grid item>
               {/*Rod*/}
               <svg height="250" width="200" className="svg-container">
@@ -35,6 +34,7 @@ const HangmanGame = () => {
                 <line x1="140" y1="150" x2="160" y2="180" className="body" />
               </svg>
             </Grid>
+            <Grid item>Game</Grid>
           </Grid>
         </Box>
       </Grid>
