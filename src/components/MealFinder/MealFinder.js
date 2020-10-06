@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Grid, Box, Button, Typography, Card, CardMedia, Chip } from "@material-ui/core"
+import { Grid, Box, Button, Typography, Card, CardMedia, Chip, Link } from "@material-ui/core"
 import Description from "./Description"
 import Axios from "axios"
 
@@ -23,6 +23,7 @@ const MealFinder = () => {
                 <Typography key={index}>{recipe[`${title}${index}`]}</Typography>
             )
         }
+        console.log(result)
         return result
     }
 
@@ -38,7 +39,7 @@ const MealFinder = () => {
             borderRadius="10px"
             padding="1rem"
           >
-            <Grid container direction="column">
+            <Grid container direction="column" spacing={2}>
               <Grid item>
                 <Button
                   variant="contained"
@@ -56,9 +57,12 @@ const MealFinder = () => {
                         <CardMedia src={recipe.strMealThumb} component="img" />
                       </Grid>
                       <Grid item xs={6}>
-                        <Typography variant="subtitle">
-                          {recipe.strMeal}
-                        </Typography>
+                        <Link href={recipe.strSource} target="_blank">
+                          <Typography variant="subtitle1">
+                            {" "}
+                            {recipe.strMeal}
+                          </Typography>
+                        </Link>
                         <Typography variant="body2">
                           Category: {recipe.strCategory}
                         </Typography>
@@ -68,18 +72,22 @@ const MealFinder = () => {
                         <Typography variant="body2">
                           Tags: {recipe.strTags}
                         </Typography>
-
-                        <a href={recipe.strYoutube}> Video</a>
+                        <Link href={recipe.strYoutube} target="_blank">
+                          {" "}
+                          Video
+                        </Link>
                       </Grid>
                     </Grid>
                     <Grid container spacing={2}>
                       <Grid item container spacing={2}>
                         <Grid item xs={6}>
-                          <Typography variant="subtitle">Ingredient</Typography>
+                          <Typography variant="subtitle1">
+                            Ingredient
+                          </Typography>
                           {setRecipe("strIngredient")}
                         </Grid>
                         <Grid item xs={6}>
-                          <Typography variant="subtitle">Measure</Typography>
+                          <Typography variant="subtitle1">Measure</Typography>
                           {setRecipe("strMeasure")}
                         </Grid>
                       </Grid>
