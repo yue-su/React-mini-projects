@@ -32,12 +32,20 @@ const MealFinder = () => {
         setMeal(event.target.value)
     }
 
-    const handleSubmit = event => {
+    const handleSubmit = () => {
         Axios.get(API + "search.php?s=" + meal)
             .then((res) => {
-              res.data.meals ? setRecip(res.data.meals[0]) : setError("Try another word")
+                if (res.data.meals) {
+                    setRecip(res.data.meals[0])
+                    setError("")
+                }
+                else {
+                    setError("Try another word")
+                }
+                     
+                    
           })
-          .catch((err) => console.log(err))
+            .catch((err) => console.log(err))
     }
     return (
       <Grid container spacing={1}>
