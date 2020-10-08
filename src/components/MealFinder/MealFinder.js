@@ -1,11 +1,13 @@
 import React, { useState } from "react"
-import { Grid, Box, Button, Typography, Card, CardMedia, Chip, Link } from "@material-ui/core"
+import { Grid, Box, Button, Typography, Card, CardMedia, Link, TextField } from "@material-ui/core"
 import Description from "./Description"
 import Axios from "axios"
 
 const MealFinder = () => {
 
     const [recipe, setRecip] = useState(null)
+    const [meal, setMeal] = useState("")
+    const [error, setError] = useState("")
 
     const API = "https://www.themealdb.com/api/json/v1/1/"
 
@@ -23,10 +25,20 @@ const MealFinder = () => {
                 <Typography key={index}>{recipe[`${title}${index}`]}</Typography>
             )
         }
-        console.log(result)
         return result
     }
 
+    const handleUpdate = event => {
+        setMeal(event.target.value)
+    }
+
+    const handleSubmit = event => {
+        Axios.get(API + "search.php?s=" + meal)
+            .then((res) => {
+              res.data.meals ? setRecip(res.data.meals[0]) : setError("Try another word")
+          })
+          .catch((err) => console.log(err))
+    }
     return (
       <Grid container spacing={1}>
         <Grid item md={6} xs={12}>
@@ -41,6 +53,14 @@ const MealFinder = () => {
           >
             <Grid container direction="column" spacing={2}>
               <Grid item>
+                <TextField value={meal} onChange={handleUpdate} />
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={handleSubmit}
+                >
+                  Find a recipe
+                </Button>
                 <Button
                   variant="contained"
                   color="primary"
@@ -49,6 +69,8 @@ const MealFinder = () => {
                   Random
                 </Button>
               </Grid>
+                        <Grid item></Grid>
+                        {error && <Typography>{error}</Typography> }
               {recipe && (
                 <Grid item>
                   <Card>
