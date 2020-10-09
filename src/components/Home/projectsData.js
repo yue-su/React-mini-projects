@@ -49,11 +49,11 @@ export const projects = [
   },
   {
     id: 7,
-    name: "Building...",
-    path: "/",
-    description: "Project description",
-    heightlight: ["HTML", "CSS"],
-    image: require("../../images/project-unknown.png"),
+    name: "Expense Tracker",
+    path: "/expense-tracker",
+    description: "A expense tracker App",
+    heightlight: ["Array", "localStorage"],
+    image: require("../../images/project-7.png"),
   },
   {
     id: 8,
