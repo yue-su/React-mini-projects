@@ -15,7 +15,11 @@ const ExpenseTracker = () => {
                     borderRadius="10px"
                     padding="1rem"
                 >
-                    This is where to put the actual project JSX
+                    <Grid container direction="column" >
+                        <Grid item>
+                            
+                        </Grid>
+                    </Grid>
         </Box>
             </Grid>
             <Description />
