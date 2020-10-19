@@ -8,6 +8,8 @@ import {
   Button,
 } from "@material-ui/core"
 import Description from "./Description"
+import shortid from "shortid"
+import { blue } from "@material-ui/core/colors"
 
 const ExpenseTracker = () => {
   const [balance, setBalance] = useState(0)
@@ -36,6 +38,7 @@ const ExpenseTracker = () => {
       let contra = -form.amount
       setExpense(expense + Number(contra))
     }
+      setList([...list, form])
   }
 
   return (
@@ -77,10 +80,17 @@ const ExpenseTracker = () => {
             <Grid item>
               <Typography>History</Typography>
               <hr />
-                          {list.map((item) => {
-                              return (
-                      <div></div>
-                  )
+            </Grid>
+            <Grid item container direction="column-reverse">
+              {list.map((item) => {
+                return (
+                  <Grid item key={shortid.generate()}>
+                    <Paper>
+                      <Typography>{item.text}</Typography>
+                      <Typography>{item.amount}</Typography>
+                    </Paper>
+                  </Grid>
+                )
               })}
             </Grid>
             <Grid item>
@@ -114,7 +124,7 @@ const ExpenseTracker = () => {
                 color="secondary"
                 onClick={handleSubmit}
               >
-                submit
+                add
               </Button>
             </Grid>
           </Grid>
