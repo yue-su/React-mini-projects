@@ -15,6 +15,7 @@ import {
 import DetailsIcon from "@material-ui/icons/Details"
 import { makeStyles } from "@material-ui/core/styles"
 import { purple } from "@material-ui/core/colors"
+import shortid from "shortid"
 
 const useStyles = makeStyles((theme) => ({
   purple: {
@@ -34,9 +35,8 @@ const ProjectCard = (props) => {
   const { projects } = props
 
   return (
-    <Grid container spacing={4} justify="left" wrap>
+    <Grid container spacing={4} justify='center'>
       {projects.map((project) => {
-        //const image = require(project.image)
         return (
           <Grid item key={project.id} md={4} sm={6}>
             <Paper>
@@ -71,6 +71,7 @@ const ProjectCard = (props) => {
                       {project.heightlight.map((item) => {
                         return (
                           <Chip
+                            key={shortid.generate()}
                             className={classes.chip}
                             label={item}
                             color="primary"

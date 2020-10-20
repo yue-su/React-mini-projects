@@ -9,7 +9,6 @@ import {
 } from "@material-ui/core"
 import Description from "./Description"
 import shortid from "shortid"
-import { blue } from "@material-ui/core/colors"
 
 const ExpenseTracker = () => {
   const [balance, setBalance] = useState(0)
