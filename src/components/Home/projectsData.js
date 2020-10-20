@@ -57,11 +57,11 @@ export const projects = [
   },
   {
     id: 8,
-    name: "Building...",
-    path: "/",
-    description: "Project description",
-    heightlight: ["HTML", "CSS"],
-    image: require("../../images/project-unknown.png"),
+    name: "Amiibo Explorer",
+    path: "/amiibo-explorer",
+    description: "amiibo explorer",
+    heightlight: ["Redux", "API"],
+    image: require("../../images/project-8.png"),
   },
   {
     id: 9,

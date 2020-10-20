@@ -14,6 +14,7 @@ import HangmanGame from './HangmanGame/HangmanGame';
 import TomatoTimer from './TomatoTimer/TomatoTimer';
 import MealFinder from './MealFinder/MealFinder';
 import ExpenseTracker from './ExpenseTracker/ExpenseTracker';
+import AmiiboExplorer from './AmiiboExplorer/AmiiboExplorer';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
               <Route path="/tomato-timer" component={TomatoTimer} />
               <Route path="/meal-finder" component={MealFinder} />
               <Route path="/expense-tracker" component={ExpenseTracker} />
+              <Route path="/amiibo-explorer" component={AmiiboExplorer} />
             </Switch>
           </Container>
         </Box>
