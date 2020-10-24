@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Grid, Box, Typography, Select, InputLabel, Input, MenuItem } from "@material-ui/core"
+import { Grid, Box, Typography, Select, InputLabel, Input, MenuItem, Paper, Avatar } from "@material-ui/core"
 import Description from "./Description"
 import axios from "axios"
 
@@ -20,12 +20,19 @@ const AmiiboExplorer = () => {
         axios
             .get(`https://www.amiiboapi.com/api/amiibo/`)
             .then(res => {
-            setAmiiboList(res.data.amiibo)
+                setAmiiboList(res.data.amiibo)
+                console.log(res.data.amiibo)
         })
     }, [])
     
     const handleChange = event => {
-        setSerie(event.target.value)
+        const {value} = event.target
+        setSerie(value)
+        axios
+            .get(`https://www.amiiboapi.com/api/amiibo/?amiiboSeries=${value}`)
+            .then(res => {
+            setAmiiboList(res.data.amiibo)
+        })
     }
 
     return (
@@ -60,8 +67,18 @@ const AmiiboExplorer = () => {
                             }
                             </Select>
                         </Grid>
-                        <Grid item>
-                            
+                        <Grid item container spacing={2}>
+                            {
+                                amiiboList.map(item => {
+                                    return (
+                                        <Grid key={item.tail} item>
+                                            <Paper>
+                                                <Avatar src={item.image} />
+                                            </Paper>
+                                        </Grid>
+                                    )
+                                })
+                            }
                         </Grid>
 
               </Grid>
