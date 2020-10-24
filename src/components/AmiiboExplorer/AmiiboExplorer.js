@@ -15,13 +15,11 @@ const AmiiboExplorer = () => {
             .get(`https://www.amiiboapi.com/api/amiiboseries`)
             .then(res => {
                 setSeries(res.data.amiibo)
-                console.log(res.data.amiibo)
             })
         axios
             .get(`https://www.amiiboapi.com/api/amiibo/`)
             .then(res => {
                 setAmiiboList(res.data.amiibo)
-                console.log(res.data.amiibo)
         })
     }, [])
     
@@ -48,7 +46,7 @@ const AmiiboExplorer = () => {
               borderRadius="10px"
               padding="1rem"
             >
-                    <Grid container direction='column'>
+                    <Grid container direction='column' spacing={2}>
                         <Grid item>
                             <Typography variant='h6' align='center'>Amiibo Explorer</Typography>
                         </Grid>
@@ -57,6 +55,7 @@ const AmiiboExplorer = () => {
                             <Select
                                 labelId='serie'
                                 value={serie}
+                                placeholder="select your game serie"
                                 onChange={handleChange}
                                 input={<Input />}
                             >
