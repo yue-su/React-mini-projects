@@ -65,11 +65,11 @@ export const projects = [
   },
   {
     id: 9,
-    name: "Building...",
-    path: "/",
-    description: "Project description",
+    name: "Breakout Game",
+    path: "/breakout-game",
+    description: "A game on HTML 5 Canvas API",
     heightlight: ["HTML", "CSS"],
-    image: require("../../images/project-unknown.png"),
+    image: require("../../images/project-9.png"),
   },
 
 ]

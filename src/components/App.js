@@ -15,6 +15,7 @@ import TomatoTimer from './TomatoTimer/TomatoTimer';
 import MealFinder from './MealFinder/MealFinder';
 import ExpenseTracker from './ExpenseTracker/ExpenseTracker';
 import AmiiboExplorer from './AmiiboExplorer/AmiiboExplorer';
+import BreakoutGame from './BreakoutGame/BreakoutGame';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
               <Route path="/meal-finder" component={MealFinder} />
               <Route path="/expense-tracker" component={ExpenseTracker} />
               <Route path="/amiibo-explorer" component={AmiiboExplorer} />
+              <Route path="/breakout-game" component={BreakoutGame} />
             </Switch>
           </Container>
         </Box>
