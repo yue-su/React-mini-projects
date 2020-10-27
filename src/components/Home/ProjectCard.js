@@ -23,19 +23,18 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: purple[600],
   },
   chip: {
-    fontSize: '0.75rem',
-    marginRight: '2px',
-  }
+    fontSize: "0.75rem",
+    marginRight: "2px",
+  },
 }))
 
 const ProjectCard = (props) => {
-
-    const classes = useStyles()
+  const classes = useStyles()
 
   const { projects } = props
 
   return (
-    <Grid container spacing={4} justify='center'>
+    <Grid container spacing={4} justify="center">
       {projects.map((project) => {
         return (
           <Grid item key={project.id} md={4} sm={6}>
@@ -46,9 +45,16 @@ const ProjectCard = (props) => {
                   <CardContent>
                     <Grid container>
                       <Grid item xs={10}>
-                        <Typography variant="subtitle2" align="left">
-                          {project.name}
-                        </Typography>
+                        <Link
+                          to={project.path}
+                          component={RouterLink}
+                          underline="none"
+                          color="primary"
+                        >
+                          <Typography variant="subtitle2" align="left">
+                            {project.name}
+                          </Typography>
+                        </Link>
                         <Typography variant="body2">
                           {project.description}
                         </Typography>

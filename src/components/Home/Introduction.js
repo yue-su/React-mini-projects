@@ -19,7 +19,7 @@ const Introduction = () => {
         </Typography>
       </Grid>
       <Grid item align="justify">
-        <Typography paragraph>
+        {/* <Typography paragraph>
           As a front-end developer, it is imperative to keep sharpening your
           skills, updating knowledge, and tapping into some unfamiliar
           territories. Although there are tons of tutorials, articles, books,
@@ -27,7 +27,7 @@ const Introduction = () => {
           It's time to get your hands dirty, make mistakes, break things, fix
           things, slowly buildup a sturdy understanding of the hardcore
           concepts, and gain some real experiences.
-        </Typography>
+        </Typography> */}
         <Typography paragraph>
           This website is a project about implementing some of the key concepts
           I learned when studying in{" "}
