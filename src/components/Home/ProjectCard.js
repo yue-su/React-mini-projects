@@ -16,6 +16,7 @@ import DetailsIcon from "@material-ui/icons/Details"
 import { makeStyles } from "@material-ui/core/styles"
 import { purple } from "@material-ui/core/colors"
 import shortid from "shortid"
+import { useSpring, a } from "react-spring"
 
 const useStyles = makeStyles((theme) => ({
   purple: {
@@ -33,13 +34,20 @@ const ProjectCard = (props) => {
 
   const { projects } = props
 
+  const lifting = useSpring({
+    from: { transform: "translate3d(0,40px,50px)", opacity: 0 },
+    transform: "translate3d(0,0px,0)",
+    opacity: 1,
+    delay: 800,
+  })
+
   return (
     <Grid container spacing={4} justify="center">
       {projects.map((project) => {
         return (
           <Grid item key={project.id} md={4} sm={6}>
-            <Paper>
-              <Box>
+            <a.div style={lifting}>
+              <Paper>
                 <Card>
                   <CardMedia src={project.image} component="img" />
                   <CardContent>
@@ -89,8 +97,8 @@ const ProjectCard = (props) => {
                     </Box>
                   </CardContent>
                 </Card>
-              </Box>
-            </Paper>
+              </Paper>
+            </a.div>
           </Grid>
         )
       })}

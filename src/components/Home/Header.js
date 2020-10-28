@@ -12,6 +12,7 @@ import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount"
 import { Link } from "react-router-dom"
 import logoTransparent from "../../images/logo_transparent.png"
 import { makeStyles } from "@material-ui/core/styles"
+import { useSpring, a } from "react-spring"
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -33,6 +34,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
   const classes = useStyles()
+  const fade = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    delay: 800,
+  })
 
   return (
     <Grid container className={classes.header}>
@@ -54,9 +60,11 @@ const Header = () => {
           alignItems="center"
           height="100%"
         >
-          <Typography variant="h3" align="center">
-            REACT MINI PROJECTS
-          </Typography>
+          <a.div style={fade}>
+            <Typography variant="h3" align="center">
+              REACT MINI PROJECTS
+            </Typography>
+          </a.div>
         </Box>
       </Grid>
       <Grid item sm={2} xs={12}>
