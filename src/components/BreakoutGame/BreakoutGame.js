@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 import { Grid, Box, Typography } from "@material-ui/core"
 import Description from "./Description"
 import "./BreakoutGame.css"
+import { Score } from "@material-ui/icons"
 
 const ballInit = {
   x: 0,
@@ -20,11 +21,29 @@ const paddleInit = {
   dx: 0,
 }
 
+const dpi = window.devicePixelRatio
+
+function fix_dpi(canvas) {
+  //create a style object that returns width and height
+  let style = {
+    height() {
+      return +getComputedStyle(canvas).getPropertyValue("height").slice(0, -2)
+    },
+    width() {
+      return +getComputedStyle(canvas).getPropertyValue("width").slice(0, -2)
+    },
+  }
+  //set the correct attributes for a crystal clear image!
+  canvas.setAttribute("width", style.width() * dpi)
+  canvas.setAttribute("height", style.height() * dpi)
+}
+
 const BreakoutGame = () => {
   const canvasRef = useRef(null)
 
   const [ball, setBall] = useState(ballInit)
   const [paddle, setPaddle] = useState(paddleInit)
+  const [score, setScore] = useState(0)
 
   const drawBall = (ctx, ball) => {
     ctx.beginPath()
@@ -42,6 +61,11 @@ const BreakoutGame = () => {
     ctx.closePath()
   }
 
+  const drawScore = (ctx, score, canvas) => {
+    ctx.font = "20px Roboto"
+    ctx.fillText(`Score: ${score}`, canvas.width - 100, 30)
+  }
+
   //set up canvas with useRef
   useEffect(() => {
     const canvas = canvasRef.current
@@ -50,7 +74,7 @@ const BreakoutGame = () => {
     setBall({
       x: canvas.width / 2,
       y: canvas.height / 2,
-      size: 5,
+      size: 10,
       speed: 4,
       dx: 4,
       dy: -4,
@@ -61,14 +85,16 @@ const BreakoutGame = () => {
       x: canvas.width / 2 - 40,
       y: canvas.height - 20,
       w: 80,
-      h: 10,
+      h: 20,
       speed: 8,
       dx: 0,
     })
 
+    fix_dpi(canvas)
     drawBall(ctx, ball)
     drawPaddle(ctx, paddle)
-  }, [ball, paddle])
+    drawScore(ctx, score, canvas)
+  }, [ball, paddle, score])
 
   return (
     <Grid container spacing={1}>
@@ -82,7 +108,7 @@ const BreakoutGame = () => {
           borderRadius="10px"
           padding="1rem"
         >
-          <Grid container direction="column">
+          <Grid container direction="column" spacing={2}>
             <Grid item>
               <Typography>Breakout Game</Typography>
             </Grid>
