@@ -5,15 +5,20 @@ const Description = () => {
   return (
     <Grid item md={6} xs={12}>
       <Paper>
-        <Box px={2}>
-          <Typography variant="h6" align="center" gutterBottom>
-            Project Title
-          </Typography>
-          <Typography paragraph>paragraph 1</Typography>
-          <Typography paragraph>paragraph 2</Typography>
-          <Typography paragraph>paragraph 3</Typography>
-          <Typography paragraph>paragraph 4</Typography>
-        </Box>
+        <Grid container>
+          <Grid item>
+            <Typography>Introduction</Typography>
+          </Grid>
+          <Grid item>
+            <Typography>
+              Use the right and left keys to move the paddle to bounce the ball
+              up and break the blocks.
+            </Typography>
+            <Typography>
+              If the ball is missing, the score and the blocks will reset.
+            </Typography>
+          </Grid>
+        </Grid>
       </Paper>
     </Grid>
   )
