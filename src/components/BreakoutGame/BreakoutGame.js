@@ -4,6 +4,8 @@ import Description from "./Description"
 import "./BreakoutGame.css"
 import { Score } from "@material-ui/icons"
 
+const dpi = window.devicePixelRatio
+
 const ballInit = {
   x: 0,
   y: 0,
@@ -21,21 +23,13 @@ const paddleInit = {
   dx: 0,
 }
 
-const dpi = window.devicePixelRatio
-
-function fix_dpi(canvas) {
-  //create a style object that returns width and height
-  let style = {
-    height() {
-      return +getComputedStyle(canvas).getPropertyValue("height").slice(0, -2)
-    },
-    width() {
-      return +getComputedStyle(canvas).getPropertyValue("width").slice(0, -2)
-    },
-  }
-  //set the correct attributes for a crystal clear image!
-  canvas.setAttribute("width", style.width() * dpi)
-  canvas.setAttribute("height", style.height() * dpi)
+const brickInit = {
+  w: 70,
+  h: 20,
+  padding: 10,
+  offsetX: 45,
+  offsetY: 60,
+  visible: true,
 }
 
 const BreakoutGame = () => {
@@ -44,6 +38,8 @@ const BreakoutGame = () => {
   const [ball, setBall] = useState(ballInit)
   const [paddle, setPaddle] = useState(paddleInit)
   const [score, setScore] = useState(0)
+  const [brick, setBrick] = useState(brickInit)
+  const [bricks, setBricks] = useState([])
 
   const drawBall = (ctx, ball) => {
     ctx.beginPath()
@@ -90,6 +86,8 @@ const BreakoutGame = () => {
       dx: 0,
     })
 
+    setBricks()
+
     fix_dpi(canvas)
     drawBall(ctx, ball)
     drawPaddle(ctx, paddle)
@@ -121,6 +119,21 @@ const BreakoutGame = () => {
       <Description />
     </Grid>
   )
+}
+
+function fix_dpi(canvas) {
+  //create a style object that returns width and height
+  let style = {
+    height() {
+      return +getComputedStyle(canvas).getPropertyValue("height").slice(0, -2)
+    },
+    width() {
+      return +getComputedStyle(canvas).getPropertyValue("width").slice(0, -2)
+    },
+  }
+  //set the correct attributes for a crystal clear image!
+  canvas.setAttribute("width", style.width() * dpi)
+  canvas.setAttribute("height", style.height() * dpi)
 }
 
 export default BreakoutGame
