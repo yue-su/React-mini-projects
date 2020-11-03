@@ -1,18 +1,21 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import { Grid, Box, Typography } from "@material-ui/core"
 import Description from "./Description"
 import "./BreakoutGame.css"
-import { Score } from "@material-ui/icons"
 
 const dpi = window.devicePixelRatio
 
 const ball = {
+  x: 400,
+  y: 400,
   size: 10,
   speed: 4,
   dx: 4,
   dy: -4,
 }
 const paddle = {
+  x: 360,
+  y: 780,
   w: 80,
   h: 20,
   speed: 8,
@@ -28,22 +31,35 @@ const brick = {
   visible: true,
 }
 
+const bricks = []
+const row = 9
+const column = 5
+
+for (let i = 0; i < row; i++) {
+  bricks[i] = []
+  for (let j = 0; j < column; j++) {
+    const x = i * (brick.w + brick.padding) + brick.offsetX
+    const y = j * (brick.h + brick.padding) + brick.offsetY
+    bricks[i][j] = { x, y, ...brick }
+  }
+}
+
+let score = 0
+
 const BreakoutGame = () => {
   const canvasRef = useRef(null)
 
-  const [score, setScore] = useState(0)
-
-  const drawBall = (ctx, ball, canvas) => {
+  const drawBall = (ctx, ball) => {
     ctx.beginPath()
-    ctx.arc(canvas.width / 2, canvas.height / 2, ball.size, 0, Math.PI * 2)
+    ctx.arc(ball.x, ball.y, ball.size, 0, Math.PI * 2)
     ctx.fillStyle = "#0095dd"
     ctx.fill()
     ctx.closePath()
   }
 
-  const drawPaddle = (ctx, paddle, canvas) => {
+  const drawPaddle = (ctx, paddle) => {
     ctx.beginPath()
-    ctx.rect(canvas.width / 2 - 40, canvas.height - 20, paddle.w, paddle.h)
+    ctx.rect(paddle.x, paddle.y, paddle.w, paddle.h)
     ctx.fillStyle = "#0095dd"
     ctx.fill()
     ctx.closePath()
@@ -55,16 +71,6 @@ const BreakoutGame = () => {
   }
 
   const drawBricks = (ctx, row, column) => {
-    const bricks = []
-    for (let i = 0; i < row; i++) {
-      bricks[i] = []
-      for (let j = 0; j < column; j++) {
-        const x = i * (brick.w + brick.padding) + brick.offsetX
-        const y = j * (brick.h + brick.padding) + brick.offsetY
-        bricks[i][j] = { x, y, ...brick }
-      }
-    }
-
     bricks.forEach((column) => {
       column.forEach((brick) => {
         ctx.beginPath()
@@ -76,14 +82,126 @@ const BreakoutGame = () => {
     })
   }
 
-  const handleKeyUp = (event) => {
-    console.log(1)
-  }
-  const handleKeyDown = (event) => {
-    console.log(0)
+  const handleKeyUp = (e) => {
+    if (
+      e.key === "Right" ||
+      e.key === "ArrowRight" ||
+      e.key === "Left" ||
+      e.key === "ArrowLeft"
+    ) {
+      paddle.dx = 0
+    }
   }
 
-  const movePaddle = () => {}
+  const handleKeyDown = (e) => {
+    if (e.key === "Right" || e.key === "ArrowRight") {
+      paddle.dx = paddle.speed
+    } else if (e.key === "Left" || e.key === "ArrowLeft") {
+      paddle.dx = -paddle.speed
+    }
+  }
+
+  document.addEventListener("keydown", handleKeyDown)
+  document.addEventListener("keyup", handleKeyUp)
+
+  const movePaddle = (canvas) => {
+    paddle.x += paddle.dx
+
+    // Wall detection
+    if (paddle.x + paddle.w > canvas.width) {
+      paddle.x = canvas.width - paddle.w
+    }
+
+    if (paddle.x < 0) {
+      paddle.x = 0
+    }
+  }
+
+  const showAllBricks = () => {
+    bricks.forEach((column) => {
+      column.forEach((brick) => (brick.visible = true))
+    })
+  }
+
+  const increaseScore = (canvas) => {
+    score++
+
+    if (score % (5 * 9) === 0) {
+      ball.visible = false
+      paddle.visible = false
+
+      //After 0.5 sec restart the game
+      setTimeout(function () {
+        showAllBricks()
+        score = 0
+        paddle.x = canvas.width / 2 - 40
+        paddle.y = canvas.height - 20
+        ball.x = canvas.width / 2
+        ball.y = canvas.height / 2
+        ball.visible = true
+        paddle.visible = true
+      }, 500)
+    }
+  }
+
+  const moveBall = (canvas) => {
+    ball.x += ball.dx
+    ball.y += ball.dy
+
+    // Wall collision (right/left)
+    if (ball.x + ball.size > canvas.width || ball.x - ball.size < 0) {
+      ball.dx *= -1 // ball.dx = ball.dx * -1
+    }
+
+    // Wall collision (top/bottom)
+    if (ball.y + ball.size > canvas.height || ball.y - ball.size < 0) {
+      ball.dy *= -1
+    }
+
+    // console.log(ball.x, ball.y);
+
+    // Paddle collision
+    if (
+      ball.x - ball.size > paddle.x &&
+      ball.x + ball.size < paddle.x + paddle.w &&
+      ball.y + ball.size > paddle.y
+    ) {
+      ball.dy = -ball.speed
+    }
+
+    // Brick collision
+    bricks.forEach((column) => {
+      column.forEach((brick) => {
+        if (brick.visible) {
+          if (
+            ball.x - ball.size > brick.x && // left brick side check
+            ball.x + ball.size < brick.x + brick.w && // right brick side check
+            ball.y + ball.size > brick.y && // top brick side check
+            ball.y - ball.size < brick.y + brick.h // bottom brick side check
+          ) {
+            ball.dy *= -1
+            brick.visible = false
+
+            increaseScore(canvas)
+          }
+        }
+      })
+    })
+
+    // Hit bottom wall - Lose
+    if (ball.y + ball.size > canvas.height) {
+      showAllBricks()
+      score = 0
+    }
+  }
+
+  const draw = (ctx, canvas) => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    drawBall(ctx, ball)
+    drawPaddle(ctx, paddle)
+    drawScore(ctx, score, canvas)
+    drawBricks(ctx, 9, 5)
+  }
 
   //set up canvas with useRef
   useEffect(() => {
@@ -92,21 +210,21 @@ const BreakoutGame = () => {
 
     fix_dpi(canvas)
 
-    const draw = () => {
-      drawBall(ctx, ball, canvas)
-      drawPaddle(ctx, paddle, canvas)
-      drawScore(ctx, score, canvas)
-      drawBricks(ctx, 9, 5)
-    }
+    let requestId
 
     const update = () => {
       movePaddle(canvas)
-      draw()
-      requestAnimationFrame(update)
+      moveBall(canvas)
+      draw(ctx, canvas)
+      requestId = requestAnimationFrame(update)
     }
 
     update()
-  }, [score])
+
+    return () => {
+      window.cancelAnimationFrame(requestId)
+    }
+  }, [])
 
   return (
     <Grid container spacing={1}>
@@ -125,11 +243,7 @@ const BreakoutGame = () => {
               <Typography>Breakout Game</Typography>
             </Grid>
             <Grid item>
-              <canvas
-                ref={canvasRef}
-                onKeyUp={handleKeyUp}
-                onKeyDown={handleKeyDown}
-              ></canvas>
+              <canvas ref={canvasRef}></canvas>
             </Grid>
           </Grid>
         </Box>
