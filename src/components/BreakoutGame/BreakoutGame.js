@@ -76,16 +76,36 @@ const BreakoutGame = () => {
     })
   }
 
+  const handleKeyUp = (event) => {
+    console.log(1)
+  }
+  const handleKeyDown = (event) => {
+    console.log(0)
+  }
+
+  const movePaddle = () => {}
+
   //set up canvas with useRef
   useEffect(() => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext("2d")
 
     fix_dpi(canvas)
-    drawBall(ctx, ball, canvas)
-    drawPaddle(ctx, paddle, canvas)
-    drawScore(ctx, score, canvas)
-    drawBricks(ctx, 9, 5)
+
+    const draw = () => {
+      drawBall(ctx, ball, canvas)
+      drawPaddle(ctx, paddle, canvas)
+      drawScore(ctx, score, canvas)
+      drawBricks(ctx, 9, 5)
+    }
+
+    const update = () => {
+      movePaddle(canvas)
+      draw()
+      requestAnimationFrame(update)
+    }
+
+    update()
   }, [score])
 
   return (
@@ -105,7 +125,11 @@ const BreakoutGame = () => {
               <Typography>Breakout Game</Typography>
             </Grid>
             <Grid item>
-              <canvas ref={canvasRef}></canvas>
+              <canvas
+                ref={canvasRef}
+                onKeyUp={handleKeyUp}
+                onKeyDown={handleKeyDown}
+              ></canvas>
             </Grid>
           </Grid>
         </Box>
