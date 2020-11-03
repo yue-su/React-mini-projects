@@ -32,7 +32,6 @@ const BreakoutGame = () => {
   const canvasRef = useRef(null)
 
   const [score, setScore] = useState(0)
-  const [bricks, setBricks] = useState([])
 
   const drawBall = (ctx, ball, canvas) => {
     ctx.beginPath()
@@ -55,18 +54,39 @@ const BreakoutGame = () => {
     ctx.fillText(`Score: ${score}`, canvas.width - 100, 30)
   }
 
+  const drawBricks = (ctx, row, column) => {
+    const bricks = []
+    for (let i = 0; i < row; i++) {
+      bricks[i] = []
+      for (let j = 0; j < column; j++) {
+        const x = i * (brick.w + brick.padding) + brick.offsetX
+        const y = j * (brick.h + brick.padding) + brick.offsetY
+        bricks[i][j] = { x, y, ...brick }
+      }
+    }
+
+    bricks.forEach((column) => {
+      column.forEach((brick) => {
+        ctx.beginPath()
+        ctx.rect(brick.x, brick.y, brick.w, brick.h)
+        ctx.fillStyle = brick.visible ? "#0095dd" : "transparent"
+        ctx.fill()
+        ctx.closePath()
+      })
+    })
+  }
+
   //set up canvas with useRef
   useEffect(() => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext("2d")
 
-    setBricks()
-
     fix_dpi(canvas)
     drawBall(ctx, ball, canvas)
     drawPaddle(ctx, paddle, canvas)
     drawScore(ctx, score, canvas)
-  }, [ball, paddle, score])
+    drawBricks(ctx, 9, 5)
+  }, [score])
 
   return (
     <Grid container spacing={1}>
