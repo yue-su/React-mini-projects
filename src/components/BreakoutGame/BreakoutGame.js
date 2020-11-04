@@ -224,7 +224,7 @@ const BreakoutGame = () => {
     return () => {
       window.cancelAnimationFrame(requestId)
     }
-  }, [])
+  })
 
   return (
     <Grid container spacing={1}>

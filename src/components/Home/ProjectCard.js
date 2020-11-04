@@ -17,11 +17,11 @@ import { makeStyles } from "@material-ui/core/styles"
 import { purple } from "@material-ui/core/colors"
 import shortid from "shortid"
 import { useSpring, a } from "react-spring"
+import GitHubIcon from "@material-ui/icons/GitHub"
 
 const useStyles = makeStyles((theme) => ({
   purple: {
-    color: theme.palette.getContrastText(purple[600]),
-    backgroundColor: purple[600],
+    color: purple[900],
   },
   chip: {
     fontSize: "0.75rem",
@@ -41,48 +41,50 @@ const ProjectCard = (props) => {
     delay: 1000,
   })
 
+  const githubUrl =
+    "https://github.com/yue-su/React-mini-projects/tree/master/src/components/"
+
   return (
     <Grid container spacing={4} justify="center">
       {projects.map((project) => {
+        const { id, image, path, name, description, heightlight } = project
+        const gitURL = githubUrl + name.split(" ").join("")
+
         return (
-          <Grid item key={project.id} md={4} sm={6}>
+          <Grid item key={id} md={4} sm={6}>
             <a.div style={lifting}>
               <Paper>
                 <Card>
-                  <CardMedia src={project.image} component="img" />
+                  <CardMedia src={image} component="img" />
                   <CardContent>
                     <Grid container>
                       <Grid item xs={10}>
                         <Link
-                          to={project.path}
+                          to={path}
                           component={RouterLink}
                           underline="none"
                           color="primary"
                         >
                           <Typography variant="subtitle2" align="left">
-                            {project.name}
+                            {name}
                           </Typography>
                         </Link>
-                        <Typography variant="body2">
-                          {project.description}
-                        </Typography>
+                        <Typography variant="body2">{description}</Typography>
                       </Grid>
                       <Grid item xs={2}>
                         <Link
-                          component={RouterLink}
-                          to={project.path}
+                          target="_blank"
+                          href={gitURL}
                           underline="none"
                           color="inherit"
                         >
-                          <Avatar className={classes.purple}>
-                            <DetailsIcon />
-                          </Avatar>
+                          <GitHubIcon className={classes.purple} />
                         </Link>
                       </Grid>
                     </Grid>
 
                     <Box display="flex" flexWrap="wrap" mt={1}>
-                      {project.heightlight.map((item) => {
+                      {heightlight.map((item) => {
                         return (
                           <Chip
                             key={shortid.generate()}
