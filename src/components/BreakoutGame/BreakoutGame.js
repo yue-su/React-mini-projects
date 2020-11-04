@@ -16,7 +16,7 @@ const ball = {
 const paddle = {
   x: 360,
   y: 780,
-  w: 80,
+  w: 100,
   h: 20,
   speed: 8,
   dx: 0,
@@ -126,7 +126,7 @@ const BreakoutGame = () => {
   const increaseScore = (canvas) => {
     score++
 
-    if (score % (5 * 9) === 0) {
+    if (score % (row * column) === 0) {
       ball.visible = false
       paddle.visible = false
 
