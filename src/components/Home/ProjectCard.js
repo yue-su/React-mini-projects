@@ -38,7 +38,7 @@ const ProjectCard = (props) => {
     from: { transform: "translate3d(0,40px,50px)", opacity: 0 },
     transform: "translate3d(0,0px,0)",
     opacity: 1,
-    delay: 800,
+    delay: 1000,
   })
 
   return (

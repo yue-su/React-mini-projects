@@ -71,5 +71,12 @@ export const projects = [
     heightlight: ["HTML", "CSS"],
     image: require("../../images/project-9.png"),
   },
-
+  {
+    id: 10,
+    name: "New Year Count Down",
+    path: "/new-year-count-down",
+    description: "A game on HTML 5 Canvas API",
+    heightlight: ["HTML", "CSS"],
+    image: require("../../images/project-10.png"),
+  },
 ]
