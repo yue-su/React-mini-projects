@@ -11,6 +11,7 @@ import {
   Grid,
   Chip,
   Avatar,
+  Button,
 } from "@material-ui/core"
 import DetailsIcon from "@material-ui/icons/Details"
 import { makeStyles } from "@material-ui/core/styles"
@@ -65,9 +66,9 @@ const ProjectCard = (props) => {
                           underline="none"
                           color="primary"
                         >
-                          <Typography variant="subtitle2" align="left">
+                          <Button variant="text" align="left">
                             {name}
-                          </Typography>
+                          </Button>
                         </Link>
                         <Typography variant="body2">{description}</Typography>
                       </Grid>
