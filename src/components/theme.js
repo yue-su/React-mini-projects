@@ -31,5 +31,8 @@ export const theme = createMuiTheme({
     h3: {
       fontWeight: 400,
     },
+    subtitle2: {
+      color: purple[900],
+    },
   },
 })

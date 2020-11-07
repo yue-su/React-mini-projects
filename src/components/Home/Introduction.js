@@ -1,6 +1,5 @@
 import React from "react"
 import { Typography, Grid, Link } from "@material-ui/core"
-import GitHubIcon from "@material-ui/icons/GitHub"
 
 const Introduction = () => {
   return (
@@ -67,6 +66,17 @@ const Introduction = () => {
           might have some blockers. Either way, we could all gain something in
           the end.
         </Typography> */}
+        <Grid item>
+          <Typography>
+            <Link
+              variant="subtitle2"
+              href="https://github.com/yue-su/React-mini-projects"
+              target="_blank"
+            >
+              Check the project repo on GitHub!
+            </Link>
+          </Typography>
+        </Grid>
       </Grid>
     </Grid>
   )

@@ -10,10 +10,8 @@ import {
   Paper,
   Grid,
   Chip,
-  Avatar,
   Button,
 } from "@material-ui/core"
-import DetailsIcon from "@material-ui/icons/Details"
 import { makeStyles } from "@material-ui/core/styles"
 import { purple } from "@material-ui/core/colors"
 import shortid from "shortid"
@@ -58,7 +56,7 @@ const ProjectCard = (props) => {
                 <Card>
                   <CardMedia src={image} component="img" />
                   <CardContent>
-                    <Grid container>
+                    <Grid container justify="space-between" alignItems="center">
                       <Grid item xs={10}>
                         <Link
                           to={path}
@@ -66,11 +64,8 @@ const ProjectCard = (props) => {
                           underline="none"
                           color="primary"
                         >
-                          <Button variant="text" align="left">
-                            {name}
-                          </Button>
+                          <Typography variant="subtitle2">{name}</Typography>
                         </Link>
-                        <Typography variant="body2">{description}</Typography>
                       </Grid>
                       <Grid item xs={2}>
                         <Link
@@ -83,6 +78,9 @@ const ProjectCard = (props) => {
                         </Link>
                       </Grid>
                     </Grid>
+                    <Grid container>
+                      <Typography variant="body2">{description}</Typography>
+                    </Grid>
 
                     <Box display="flex" flexWrap="wrap" mt={1}>
                       {heightlight.map((item) => {
@@ -91,7 +89,6 @@ const ProjectCard = (props) => {
                             key={shortid.generate()}
                             className={classes.chip}
                             label={item}
-                            color="primary"
                             size="small"
                             variant="outlined"
                           />
