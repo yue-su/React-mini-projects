@@ -68,13 +68,6 @@ const Introduction = () => {
           the end.
         </Typography> */}
       </Grid>
-      <Grid item>
-        <Typography align="center">
-          <Link href="https://github.com/yue-su/React-mini-projects">
-            <GitHubIcon />
-          </Link>
-        </Typography>
-      </Grid>
     </Grid>
   )
 }
