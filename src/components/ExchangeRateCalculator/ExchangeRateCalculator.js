@@ -93,6 +93,11 @@ const ExchangeRateCalculator = () => {
           padding="1rem"
           height="50vh"
         >
+          <Grid container>
+            <Grid item>
+              <Typography>Real Time ExchangeRate</Typography>
+            </Grid>
+          </Grid>
           <Grid container justify="space-between" >
             <Grid item>
               <InputLabel id="currencyFrom-label">From</InputLabel>
