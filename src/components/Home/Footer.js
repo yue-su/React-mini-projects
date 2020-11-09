@@ -1,6 +1,6 @@
 import React from "react"
 import { Typography, Box } from "@material-ui/core"
-import { grey, purple } from "@material-ui/core/colors"
+import { purple } from "@material-ui/core/colors"
 
 const Footer = () => {
   return (
