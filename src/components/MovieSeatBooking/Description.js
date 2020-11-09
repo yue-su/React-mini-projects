@@ -1,6 +1,8 @@
 import React from "react"
 import { Typography, Grid, Paper } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
+import EmojiObjectsOutlinedIcon from "@material-ui/icons/EmojiObjectsOutlined"
+import GradeOutlinedIcon from "@material-ui/icons/GradeOutlined"
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -16,7 +18,10 @@ const Description = () => {
       <Paper className={classes.container}>
         <Grid container spacing={1} direction="column">
           <Grid item>
-            <Typography variant="subtitle1">Features:</Typography>
+            <Typography variant="subtitle1">
+              <GradeOutlinedIcon />
+              Features:
+            </Typography>
           </Grid>
           <Grid item>
             <Typography>
@@ -30,7 +35,10 @@ const Description = () => {
             <Typography>• Clear the storage and start over</Typography>
           </Grid>
           <Grid item>
-            <Typography variant="subtitle1">Height:</Typography>
+            <Typography variant="subtitle1">
+              <EmojiObjectsOutlinedIcon />
+              Height:
+            </Typography>
           </Grid>
           <Grid item>
             <Typography>
