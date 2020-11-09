@@ -13,7 +13,6 @@ import {
 import EventSeatIcon from "@material-ui/icons/EventSeat"
 import Description from "./Description"
 
-
 // asign local value from localstorage or from a empty obj
 const initialCinema = JSON.parse(localStorage.getItem("movieData")) || {
   price: 10,
@@ -25,7 +24,7 @@ const initialCinema = JSON.parse(localStorage.getItem("movieData")) || {
 const MovieSeatBooking = () => {
   const [cinema, setCinema] = useState(initialCinema)
 
-    //update price
+  //update price
   const handleChange = (event) => {
     const { value } = event.target
     setCinema({
@@ -57,7 +56,7 @@ const MovieSeatBooking = () => {
       ...cinema,
       seatArr: newArr,
     })
-      
+
     const bookedSeats = newArr.filter((item) => item.booked === true)
     const newTotalPrice = cinema.price * bookedSeats.length
     setCinema({
@@ -92,80 +91,111 @@ const MovieSeatBooking = () => {
     localStorage.clear()
     clearSeat()
   }
-    
-    const clearSeat = () => {
-      let newArr = []
-      for (let i = 0; i < cinema.seatNumber; i++) {
-        newArr.push({ id: i, booked: false, color: "primary" })
-      }
-      setCinema({
-        price: cinema.price,
-        seatNumber: cinema.seatNumber,
-        totalPrice: 0,
-        seatArr: newArr,
-      })
+
+  const clearSeat = () => {
+    let newArr = []
+    for (let i = 0; i < cinema.seatNumber; i++) {
+      newArr.push({ id: i, booked: false, color: "primary" })
+    }
+    setCinema({
+      price: cinema.price,
+      seatNumber: cinema.seatNumber,
+      totalPrice: 0,
+      seatArr: newArr,
+    })
   }
 
   return (
     <Grid container spacing={1}>
       <Grid item md={6} xs={12}>
-        <Box
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
-          border="2px solid purple"
-          borderRadius="10px"
-          padding="1rem"
-        >
-          <Box>
-            <FormControl>
-              <InputLabel id="ticket-price">Price</InputLabel>
-              <Select
-                labelId="ticket-price"
-                name="price"
-                onChange={handleChange}
-                value={cinema.price}
-              >
-                <MenuItem value={10}>$10</MenuItem>
-                <MenuItem value={15}>$15</MenuItem>
-                <MenuItem value={20}>$20</MenuItem>
-              </Select>
-            </FormControl>
-            <FormControl>
-              <TextField
-                label="Total Seat Number"
-                name="seatNumber"
-                onChange={handleInput}
-                value={cinema.seatNumber}
-              />
-            </FormControl>
-          </Box>
-          <Box align="center" m={1}>
-            <Typography>Cinema</Typography>
-            <Box display="flex" flexWrap="wrap" width="250px">
-              {cinema.seatArr.map((seat) => {
-                return (
-                  <Box key={seat.id} width="25px">
-                    <EventSeatIcon
-                      color={seat.color}
-                      onClick={() => handleClick(seat.id)}
-                    />
-                  </Box>
-                )
-              })}
-            </Box>
-          </Box>
-          <Box>
-            <Typography>Total Price is ${cinema.totalPrice}</Typography>
-            <Button variant="contained" color="primary" onClick={handleSave}>
-              Save
-            </Button>
-            <Button variant="contained" color="secondary" onClick={handleClear}>
-              Clear
-            </Button>
-          </Box>
-        </Box>
+        <Grid container justify="center" direction="column" spacing={2}>
+          <Grid item container justify="center">
+            <Typography variant="h6">Movie Seat Booking</Typography>
+          </Grid>
+          <Grid item container spacing={2} justify="center">
+            <Grid item>
+              <FormControl>
+                <InputLabel id="ticket-price">Price</InputLabel>
+                <Select
+                  labelId="ticket-price"
+                  name="price"
+                  onChange={handleChange}
+                  value={cinema.price}
+                >
+                  <MenuItem value={10}>$10</MenuItem>
+                  <MenuItem value={15}>$15</MenuItem>
+                  <MenuItem value={20}>$20</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item>
+              <FormControl>
+                <TextField
+                  label="Total Seat Number"
+                  name="seatNumber"
+                  onChange={handleInput}
+                  value={cinema.seatNumber}
+                />
+              </FormControl>
+            </Grid>
+          </Grid>
+          <Grid
+            item
+            container
+            direction="column"
+            alignItems="center"
+            spacing={1}
+          >
+            <Grid item>
+              <Typography>Cinema</Typography>
+            </Grid>
+            <Grid item>
+              <Box display="flex" flexWrap="wrap" width="250px">
+                {cinema.seatArr.map((seat) => {
+                  return (
+                    <Box key={seat.id} width="25px">
+                      <EventSeatIcon
+                        color={seat.color}
+                        onClick={() => handleClick(seat.id)}
+                      />
+                    </Box>
+                  )
+                })}
+              </Box>
+            </Grid>
+          </Grid>
+          <Grid
+            item
+            container
+            direction="column"
+            spacing={1}
+            alignItems="center"
+          >
+            <Grid item>
+              <Typography>Total Price is ${cinema.totalPrice}</Typography>
+            </Grid>
+            <Grid item container justify="center" spacing={1}>
+              <Grid item>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleSave}
+                >
+                  Save
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={handleClear}
+                >
+                  Clear
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
       </Grid>
       <Description />
     </Grid>
