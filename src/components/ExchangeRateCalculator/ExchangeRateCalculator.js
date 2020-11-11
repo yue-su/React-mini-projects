@@ -7,22 +7,41 @@ import {
   Input,
   MenuItem,
   Typography,
-  TextField
+  TextField,
+  Avatar,
 } from "@material-ui/core"
 import Description from "./Description"
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn"
 import Axios from "axios"
+import { makeStyles } from "@material-ui/core/styles"
 
 //The sub grid could be changed to column stacks to better accommodate larger apps
 
 const APIkey = "eb9a635aa55f4df3f697a7e7"
 
+const useStyles = makeStyles({
+  grid: {
+    height: "400px",
+    border: "1px dotted black",
+    borderRadius: "4px",
+  },
+})
+
 const ExchangeRateCalculator = () => {
+  const classes = useStyles()
 
   const [currency, setCurrency] = useState([])
   const [rate, setRate] = useState(null)
-  const [currencyFrom, setCurrencyFrom] = useState({ currency: "USD", rate: 1, amount: 1 })
-  const [currencyTo, setCurrencyTo] = useState({ currency: "CAD", rate: "", amount:"" })
+  const [currencyFrom, setCurrencyFrom] = useState({
+    currency: "USD",
+    rate: 1,
+    amount: 1,
+  })
+  const [currencyTo, setCurrencyTo] = useState({
+    currency: "CAD",
+    rate: "",
+    amount: "",
+  })
 
   const getRates = (currency) => {
     Axios.get(
@@ -40,7 +59,7 @@ const ExchangeRateCalculator = () => {
 
   useEffect(() => {
     getRates(currencyFrom.currency)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const ITEM_HEIGHT = 48
@@ -72,11 +91,11 @@ const ExchangeRateCalculator = () => {
   const handleChangeAmount = (event) => {
     setCurrencyFrom({
       ...currencyFrom,
-      amount:event.target.value
+      amount: event.target.value,
     })
     setCurrencyTo({
       ...currencyTo,
-      amount:event.target.value * rate[`${currencyTo.currency}`]
+      amount: event.target.value * rate[`${currencyTo.currency}`],
     })
   }
 
@@ -91,60 +110,116 @@ const ExchangeRateCalculator = () => {
           border="2px solid purple"
           borderRadius="10px"
           padding="1rem"
-          height="50vh"
+          py={4}
         >
-          <Grid container>
+          <Grid container direction="column" spacing={3}>
             <Grid item>
-              <Typography>Real Time ExchangeRate</Typography>
+              <Typography variant="h6">Real Time ExchangeRate</Typography>
             </Grid>
-          </Grid>
-          <Grid container justify="space-between" >
-            <Grid item>
-              <InputLabel id="currencyFrom-label">From</InputLabel>
-              <Select
-                labelId="currencyFrom-label"
-                id="currencyFrom"
-                value={currencyFrom.currency}
-                onChange={handleChangeFrom}
-                input={<Input />}
-                MenuProps={MenuProps}
+            <Grid item container spacing={2}>
+              <Grid
+                item
+                sm={4}
+                container
+                direction="column"
+                className={classes.grid}
+                justify="space-between"
               >
-                {currency.map((item) => (
-                  <MenuItem key={item} value={item}>
-                    {item}
-                  </MenuItem>
-                ))}
-              </Select>
-              <InputLabel id="amount">Amount</InputLabel>
-              <TextField
-                labelId='amount'
-                value={currencyFrom.amount}
-                onChange={handleChangeAmount}
-              ></TextField>    
-            </Grid>
-            <Grid item>
-              <MonetizationOnIcon />
-              <Typography>{currencyTo.rate}</Typography>
-              <Typography>Equals</Typography>
-            </Grid>
-            <Grid item>
-              <InputLabel id="currencyFrom-label">To</InputLabel>
-              <Select
-                labelId="currencyFrom-label"
-                id="currencyFrom"
-                value={currencyTo.currency}
-                onChange={handleChangeTo}
-                input={<Input />}
-                MenuProps={MenuProps}
+                <Grid item>
+                  <Typography>Select currency</Typography>
+                  <Typography>From:</Typography>
+                  <InputLabel id="currencyFrom-label">From</InputLabel>
+                  <Select
+                    labelId="currencyFrom-label"
+                    id="currencyFrom"
+                    value={currencyFrom.currency}
+                    onChange={handleChangeFrom}
+                    input={<Input />}
+                    MenuProps={MenuProps}
+                  >
+                    {currency.map((item) => (
+                      <MenuItem key={item} value={item}>
+                        {item}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </Grid>
+                <Grid item>
+                  <Typography>Input Amount:</Typography>
+                  <InputLabel id="amount">Amount</InputLabel>
+                  <TextField
+                    labelId="amount"
+                    value={currencyFrom.amount}
+                    onChange={handleChangeAmount}
+                  ></TextField>
+                </Grid>
+                <Grid item container justify="center">
+                  <Avatar
+                    src={`https://www.countryflags.io/${
+                      currencyFrom.currency[0] + currencyFrom.currency[1]
+                    }/flat/64.png`}
+                  />
+                </Grid>
+              </Grid>
+              <Grid
+                item
+                sm={4}
+                container
+                justify="space-between"
+                alignItems="center"
+                direction="column"
               >
-                {currency.map((item) => (
-                  <MenuItem key={item} value={item}>
-                    {item}
-                  </MenuItem>
-                ))}
-              </Select>
-              <Typography>Total</Typography>
-              <Typography>{currencyTo.amount}</Typography>
+                <Grid item>
+                  <Typography>Rate</Typography>
+                  <Typography>{currencyTo.rate}</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography>Equals</Typography>
+                </Grid>
+                <Grid item>
+                  <MonetizationOnIcon />
+                </Grid>
+              </Grid>
+              <Grid
+                item
+                sm={4}
+                container
+                justify="space-between"
+                direction="column"
+                className={classes.grid}
+              >
+                <Grid item>
+                  <Typography>Select currency</Typography>
+                  <Typography>To:</Typography>
+                  <InputLabel id="currencyFrom-label">To</InputLabel>
+                  <Select
+                    labelId="currencyFrom-label"
+                    id="currencyFrom"
+                    value={currencyTo.currency}
+                    onChange={handleChangeTo}
+                    input={<Input />}
+                    MenuProps={MenuProps}
+                  >
+                    {currency.map((item) => (
+                      <MenuItem key={item} value={item}>
+                        {item}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </Grid>
+                <Grid item>
+                  <Typography>Total:</Typography>
+                  <br />
+                  <Typography>{currencyTo.amount}</Typography>
+                </Grid>
+                <Grid item container justify="center">
+                  <Avatar
+                    src={`https://www.countryflags.io/${
+                      currencyTo.currency[0] + currencyTo.currency[1]
+                    }/flat/64.png`}
+                  />
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
         </Box>
