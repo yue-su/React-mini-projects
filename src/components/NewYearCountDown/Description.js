@@ -7,12 +7,8 @@ const Description = () => {
       <Paper>
         <Box px={2}>
           <Typography variant="h6" align="center" gutterBottom>
-            Project Title
+            Still in the proccess of development
           </Typography>
-          <Typography paragraph>paragraph 1</Typography>
-          <Typography paragraph>paragraph 2</Typography>
-          <Typography paragraph>paragraph 3</Typography>
-          <Typography paragraph>paragraph 4</Typography>
         </Box>
       </Paper>
     </Grid>
