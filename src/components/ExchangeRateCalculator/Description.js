@@ -25,14 +25,12 @@ const Description = () => {
           </Grid>
           <Grid item>
             <Typography>
-              • The price and seat number are adjustable, and the seat map will
-              change accordingly
+              • Exchange rate data pulled from a public API
             </Typography>
-            <Typography>• Click the seats and get the total price</Typography>
+            <Typography>• Flags image changes accordingly</Typography>
             <Typography>
-              • Save the current selection to local storage
+              • Input the amount and get the total converted currency
             </Typography>
-            <Typography>• Clear the storage and start over</Typography>
           </Grid>
           <Grid item>
             <Typography variant="subtitle1">
@@ -42,14 +40,14 @@ const Description = () => {
           </Grid>
           <Grid item>
             <Typography>
-              • Initiate the local state with values from local storage
+              • A javascript keys() function for returning an array of an
+              objects' key. In this case, the API returns an array of conversion
+              rates object with the key of country code and value of the rates.
+              The keys() function is used to extract the key of country code.
             </Typography>
             <Typography>
-              • Initiate the seat map in useEffect with the seat number
-            </Typography>
-            <Typography>
-              • Track the seat number: if the number changes, re-initiate the
-              seat map
+              • A select component as well as MenuItem component are employed to
+              format the select dropdown menu
             </Typography>
           </Grid>
         </Grid>
