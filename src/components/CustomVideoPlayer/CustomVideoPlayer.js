@@ -5,6 +5,8 @@ import {
   Card,
   CardMedia,
   CardActionArea,
+  CardContent,
+  Typography,
 } from "@material-ui/core"
 import PlayArrowIcon from "@material-ui/icons/PlayArrow"
 import PauseIcon from "@material-ui/icons/Pause"
@@ -12,15 +14,13 @@ import ReplayIcon from "@material-ui/icons/Replay"
 import doggy from "../../video/doggy.mp4"
 import Description from "./Description"
 
-
 const CustomVideoPlayer = () => {
+  const [video, setVideo] = useState(null)
+  const [currentTime, setCurrentTime] = useState(0)
+  const [length, setLength] = useState(null)
 
-const [video, setVideo] = useState(null)
-const [currentTime, setCurrentTime] = useState(0)
-const [length, setLength] = useState(null)
-
-//once the dom rendered, set the video with the actually dom element.
-//this can not be done by const video = document.getElementByID, becasue the first time it runs the dom has not been rendered.
+  //once the dom rendered, set the video with the actually dom element.
+  //this can not be done by const video = document.getElementByID, becasue the first time it runs the dom has not been rendered.
   useEffect(() => {
     const video = document.getElementById("video")
     setVideo(video)
@@ -30,38 +30,36 @@ const [length, setLength] = useState(null)
     }, 10)
   }, [])
 
-
   const duration = () => {
     const duration = video.duration.toFixed()
     setLength(duration)
-}
+  }
 
-const handleMeta = (event) => {
-  const { duration } = event.target
-  setLength(duration)
-}
+  const handleMeta = (event) => {
+    const { duration } = event.target
+    setLength(duration)
+  }
 
-const handelPlay = () => {
-  duration()
-  video.play()
-}
+  const handelPlay = () => {
+    duration()
+    video.play()
+  }
 
-const handlePause = () => {
-  video.pause()
-}
+  const handlePause = () => {
+    video.pause()
+  }
 
-const handleReplay = () => {
-  video.load()
-  video.play()
-}
+  const handleReplay = () => {
+    video.load()
+    video.play()
+  }
 
-const handleTime = (event) => {
-  const { value } = event.target
-  video.currentTime = value
-  setCurrentTime(value)
-}
+  const handleTime = (event) => {
+    const { value } = event.target
+    video.currentTime = value
+    setCurrentTime(value)
+  }
 
-    
   return (
     <Grid container spacing={1}>
       <Grid item md={6} xs={12}>
@@ -96,6 +94,11 @@ const handleTime = (event) => {
                 max={length}
               />
             </CardActionArea>
+            <CardContent>
+              <Typography>{`Duration: ${Math.floor(
+                currentTime
+              )} s`}</Typography>
+            </CardContent>
           </Card>
         </Box>
       </Grid>
