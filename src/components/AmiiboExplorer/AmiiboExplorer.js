@@ -84,7 +84,12 @@ const AmiiboExplorer = () => {
               justify="center"
               alignItems="center"
             >
-              {isLoading && <CachedIcon />}
+              {isLoading && (
+                <Typography>
+                  <CachedIcon />
+                  Loading...
+                </Typography>
+              )}
 
               {amiiboList.map((item) => {
                 return (
